@@ -3,7 +3,7 @@
 
 export default function StorytellingSection({ imgSrc = '/assets/notfound.jpg' }) {
   return (
-    <section className="w-full bg-white py-14 md:py-20">
+    <section className="w-full py-14 md:py-20">
       <div className="mx-auto max-w-6xl px-6">
         {/* Titre */}
         <h2 className="text-center text-[26px] font-extrabold leading-tight md:text-[32px]">

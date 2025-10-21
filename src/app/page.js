@@ -34,7 +34,7 @@ function Review({ text, author }) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F8F8F8] text-neutral-900">
+    <main className="min-h-screen text-neutral-900">
       {/* HERO */}
       <Header/>
       <Hero/>

@@ -10,7 +10,7 @@ export default function TrainingTeaser({
   ctaHref = "/formations"
 }) {
   return (
-    <section className="w-full bg-white py-14 md:py-20">
+    <section className="w-full py-14 md:py-20">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-14">
         {/* Colonne Image */}
         <div className="flex flex-col items-center">

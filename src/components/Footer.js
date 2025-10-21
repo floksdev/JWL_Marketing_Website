@@ -5,7 +5,7 @@ const BTN_BG = "#D6C1B0";       // plus foncé que #E3D1C2
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-white">
+    <footer className="border-t bg-[#E3D1C2]">
       <div className="mx-auto max-w-7xl px-4 py-10">
         {/* Top */}
         <div className="grid gap-8 md:grid-cols-3">
