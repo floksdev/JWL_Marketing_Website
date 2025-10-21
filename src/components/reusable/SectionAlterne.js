@@ -71,7 +71,7 @@ export default function SectionAlterne({
           <Heading id={id ? `${id}-title` : undefined} level={level} className="text-3xl sm:text-4xl">
             {title}
           </Heading>
-          <div className="mt-2 h-[3px] w-40 rounded" style={{ backgroundColor: AMBER }} />
+          <div className="mt-2 h-[3px] w-full rounded" style={{ backgroundColor: AMBER }} />
           <div className="prose prose-neutral max-w-none prose-p:leading-7 prose-p:md:leading-8 mt-6">
             {children}
           </div>
