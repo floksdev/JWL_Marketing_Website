@@ -216,7 +216,7 @@ function PillRow({ title, caption, gradient, src }) {
 function MobilePortraitAtEnd() {
   return (
     <div className="mt-4 flex justify-center">
-        <img src="/assets/jodie_polaroid.png" alt="" className="h-full w-full object-cover" />
+        <img src="/assets/jodie_polaroid.png" alt="" className="w-30 h--30 md:h-full md:w-full object-cover" />
     </div>
   );
 }
