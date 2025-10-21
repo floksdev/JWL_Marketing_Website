@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
 
 
-export default function Home() {
+export default function () {
   return (
-    <main className="min-h-screen text-neutral-900">
-        <Header />
-    </main>
+    <div className="text-red-600">
+        salut
+    </div>
   );
 }
