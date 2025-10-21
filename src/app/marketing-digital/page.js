@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
+import SectionPourquoiIndependant from "@/components/marketing-digital/SectionPourquoiIndependant";
 
 
 
@@ -42,6 +43,7 @@ export default function MarketingDigital() {
                 notoriété digitale.
             </p>
         </SectionAlterne>
+        <SectionPourquoiIndependant/>
 
         <SectionAlterne
             id="cibles"
