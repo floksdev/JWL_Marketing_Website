@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 
-export default function () {
+export default function MarketingDigital() {
   return (
-    <div className="text-red-600">
-        salut
-    </div>
+    <main className="min-h-screen text-neutral-900">
+      <Header/>
+    </main>
   );
 }
