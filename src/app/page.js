@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header.js";
-import Footer from "@/components/Footer.js";
-import Hero from "@/components/Hero.js";
-import AlliesSection from "@/components/AlliesSection.js";
-import AboutSection from "@/components/AboutSection.js";
-import ServicesHubSection from "@/components/ServicesHubSection.js";
-import AboutGuideSection from "@/components/AboutGuideSection.js";
-import ValuesSection from "@/components/ValuesSection.js";
-import SiteMapPitchSection from "@/components/SiteMapPitchSection.js";
-import PersonalBrandSection from "@/components/PersonalBrandSection.js";
-import StorytellingSection from "@/components/StorytellingSection.js";
-import TrainingTeaser from "@/components/TrainingTeaser.js";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import AlliesSection from "@/components/AlliesSection";
+import AboutSection from "@/components/AboutSection";
+import ServicesHubSection from "@/components/ServicesHubSection";
+import AboutGuideSection from "@/components/AboutGuideSection";
+import ValuesSection from "@/components/ValuesSection";
+import SiteMapPitchSection from "@/components/SiteMapPitchSection";
+import PersonalBrandSection from "@/components/PersonalBrandSection";
+import StorytellingSection from "@/components/StorytellingSection";
+import TrainingTeaser from "@/components/TrainingTeaser";
 
 function ServiceCard({ title, text, img }) {
   return (
