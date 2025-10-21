@@ -4,7 +4,7 @@
 const GOLD = '#E8C88F';
 
 export default function PersonalBrandSection({
-  frameImg = '/assets/jodie2.jpeg',   // visuel “polaroid” (transp. recommandé)
+  frameImg = '/assets/notfound.jpg',   // visuel “polaroid” (transp. recommandé)
   heartImg = '/assets/emoji_heart.png',       // décor facultatif
   mediaImg = '/assets/emoji_media.png',       // décor facultatif
   atImg    = '/assets/emoji_at.png',          // décor facultatif

@@ -67,7 +67,7 @@ export default function AboutSection() {
 
         {/* Visuel circulaire avec cadre doré + couronne */}
         <div className="flex justify-center">
-          <div className="relative h-[340px] w-[340px] md:h-[420px] md:w-[420px]">
+          <div className="relative h-[240px] w-[240px] md:h-[420px] md:w-[420px]">
             {/* cadre doré */}
             <div
               className="absolute -inset-2 rounded-full"
@@ -84,7 +84,7 @@ export default function AboutSection() {
             <img
               src="/assets/signature.png"
               alt=""
-              className="pointer-events-none absolute top-66 md:top-82 left-1/2 w-40 -translate-x-1/2 md:w-48"
+              className="pointer-events-none absolute top-42 md:top-82 left-1/2 w-40 -translate-x-1/2 md:w-48"
             />
           </div>
         </div>

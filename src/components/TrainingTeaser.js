@@ -2,7 +2,7 @@
 'use client';
 
 export default function TrainingTeaser({
-  photo = '/assets/jodie2.jpeg',
+  photo = '/assets/notfound.jpg',
   logo  = '/assets/signature.png',
   title = "Améliorez votre carrière en vous formant sur la prospection, les méthodes de vente…",
   subtitle = "Un atelier à la demande pour vous aider à atteindre vos objectifs de carrière",
@@ -36,7 +36,7 @@ export default function TrainingTeaser({
             {title}
           </h3>
 
-          <div className="mt-4 h-[3px] w-24 rounded bg-[#E8C88F] md:ml-0 md:mr-auto mx-auto" />
+          <div className="mt-4 h-[3px] w-full rounded bg-[#E8C88F] md:ml-0 md:mr-auto mx-auto" />
 
           <p className="mt-5 text-[15px] leading-7 text-neutral-800">
             {subtitle}

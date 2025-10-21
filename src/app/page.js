@@ -40,7 +40,6 @@ export default function Home() {
       <Hero/>
       <AlliesSection/>
       <AboutSection/>
-      {/* <ServicesSection/> */}
       <ServicesHubSection/>
       <AboutGuideSection/>
       <ValuesSection/>

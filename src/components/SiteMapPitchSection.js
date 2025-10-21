@@ -7,7 +7,7 @@ const GOLD = '#E8C88F';        // liseré/décor doré
 const PINK = '#E3D1C2';        // fond rosé de la section
 
 export default function SiteMapPitchSection({
-  img = '/assets/jodie2.jpeg',          // image circulaire à droite
+  img = '/assets/notfound.jpg',          // image circulaire à droite
   floralOverlay = '/assets/floral_overlay.png', // optionnel : décor floraux PNG (transparent)
   showFloral = false,                        // active/désactive l’overlay floral
 }) {

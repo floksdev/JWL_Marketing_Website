@@ -1,7 +1,7 @@
 // src/components/StorytellingSection.jsx
 'use client';
 
-export default function StorytellingSection({ imgSrc = '/assets/jodie2.jpeg' }) {
+export default function StorytellingSection({ imgSrc = '/assets/notfound.jpg' }) {
   return (
     <section className="w-full bg-white py-14 md:py-20">
       <div className="mx-auto max-w-6xl px-6">

@@ -4,7 +4,6 @@
 import Link from 'next/link';
 
 const GOLD = '#E8C88F';
-const IMG  = '/assets/jodie2.jpeg';
 
 // ===== Réglages globaux =====
 const CANVAS_W = 1160;
@@ -63,6 +62,7 @@ export default function ServicesHubSection() {
           title="Audit SEO"
           caption="Stratégies • Optimisation • Référencement"
           gradient="from-[#386CC7] to-[#2F5AAC]"
+          src="/assets/auditseo.png"
         />
         <PillAbs
           side="right"
@@ -71,6 +71,7 @@ export default function ServicesHubSection() {
           title="Refonte Web"
           caption="Arborescence • Avec ou sans SEO"
           gradient="from-[#8C6AD5] to-[#6D53B1]"
+          src="/assets/refonteweb.png"
         />
 
         {/* Ligne 2 (plus loin sur X) */}
@@ -81,6 +82,7 @@ export default function ServicesHubSection() {
           title="Branding et Logo"
           caption="Identité visuelle • Logo • Valeurs"
           gradient="from-[#3BB7C5] to-[#2A95A1]"
+          src="/assets/brandinglogo.png"
         />
         <PillAbs
           side="right"
@@ -89,6 +91,7 @@ export default function ServicesHubSection() {
           title="Social Média"
           caption="Contenu • Mots clés • Conversion"
           gradient="from-[#5B58CC] to-[#4744A3]"
+          src="/assets/notfound.jpg"
         />
 
         {/* Ligne 3 (alignée comme la 1) */}
@@ -99,6 +102,7 @@ export default function ServicesHubSection() {
           title="Développement commercial"
           caption="Prospection • Argumentaire • Closing"
           gradient="from-[#58B162] to-[#469251]"
+          src="/assets/devcommercial.png"
         />
         <PillAbs
           side="right"
@@ -107,23 +111,23 @@ export default function ServicesHubSection() {
           title="Formations"
           caption="Méthode • Confiance • Autonomie"
           gradient="from-[#F08E4A] to-[#D47430]"
+          src="/assets/formations.png"
         />
       </div>
 
       {/* Mobile (≤ lg) — SANS le rond + texte ; le petit rectangle est déplacé à la fin */}
-      <div className="mt-8 space-y-5 lg:hidden">
+     <div className="mt-8 space-y-5 lg:hidden">
         {[
-          ['Audit SEO', 'Stratégies • Optimisation • Référencement', 'from-[#386CC7] to-[#2F5AAC]'],
-          ['Refonte Web', 'Arborescence • Avec ou sans SEO', 'from-[#8C6AD5] to-[#6D53B1]'],
-          ['Branding et Logo', 'Identité visuelle • Logo • Valeurs', 'from-[#3BB7C5] to-[#2A95A1]'],
-          ['Social Média', 'Contenu • Mots clés • Conversion', 'from-[#5B58CC] to-[#4744A3]'],
-          ['Développement commercial', 'Prospection • Argumentaire • Closing', 'from-[#58B162] to-[#469251]'],
-          ['Formations', 'Méthode • Confiance • Autonomie', 'from-[#F08E4A] to-[#D47430]'],
-        ].map(([t, c, g]) => (
-          <PillRow key={t} title={t} caption={c} gradient={g} />
+          ['Audit SEO', 'Stratégies • Optimisation • Référencement', 'from-[#386CC7] to-[#2F5AAC]', '/assets/auditseo.png'],
+          ['Refonte Web', 'Arborescence • Avec ou sans SEO', 'from-[#8C6AD5] to-[#6D53B1]', '/assets/refonteweb.png'],
+          ['Branding et Logo', 'Identité visuelle • Logo • Valeurs', 'from-[#3BB7C5] to-[#2A95A1]', '/assets/brandinglogo.png'],
+          ['Social Média', 'Contenu • Mots clés • Conversion', 'from-[#5B58CC] to-[#4744A3]', '/assets/notfound.jpg'],
+          ['Développement commercial', 'Prospection • Argumentaire • Closing', 'from-[#58B162] to-[#469251]', '/assets/devcommercial.png'],
+          ['Formations', 'Méthode • Confiance • Autonomie', 'from-[#F08E4A] to-[#D47430]', '/assets/formations.png'],
+        ].map(([t, c, g, s]) => (
+          <PillRow key={t} title={t} caption={c} gradient={g} src={s} />
         ))}
 
-        {/* → le petit rectangle “portrait” déplacé à la fin */}
         <MobilePortraitAtEnd />
       </div>
     </section>
@@ -136,22 +140,20 @@ function CenterAbsolute({ x, y }) {
   return (
     <div className="absolute z-10" style={{ left: x - 120, top: y - 120, width: 240, height: 240 }}>
       <span aria-hidden className="absolute inset-0 rounded-full" style={{ boxShadow: `inset 0 0 0 6px ${GOLD}` }} />
-      <img src={IMG} alt="Jodie - Consultante" className="h-full w-full rounded-full object-cover" />
+      <img src="/assets/personna_judie.png" alt="Jodie - Consultante" className="h-full w-full rounded-full object-cover" />
       <div className="absolute left-1/2 top-[260px] w-[260px] -translate-x-1/2 text-center">
         <p className="text-[18px] font-extrabold leading-5">Jodie LAPIALLERIE</p>
         <p className="text-[13px]" style={{ color: GOLD }}>Consultante</p>
       </div>
       {/* plus bas sur desktop */}
       <div className="absolute left-1/2 top-[380px] -translate-x-1/2">
-        <div className="h-[110px] w-[150px] overflow-hidden rounded border border-black/10 bg-white shadow-sm">
-          <img src={IMG} alt="" className="h-full w-full object-cover" />
-        </div>
+          <img src='/assets/jodie_polaroid.png' alt="" className="h-full w-full object-cover" />
       </div>
     </div>
   );
 }
 
-function PillAbs({ side = 'left', x, y, title, caption, gradient }) {
+function PillAbs({ side = 'left', x, y, title, caption, gradient, src }) {
   const padLeft  = side === 'right' ? AVA + GAP + TEXT_GAP : 20;
   const padRight = side === 'left'  ? AVA + GAP + TEXT_GAP : 20;
 
@@ -173,7 +175,7 @@ function PillAbs({ side = 'left', x, y, title, caption, gradient }) {
         className="absolute top-1/2 -translate-y-1/2 block h-[108px] w-[108px] overflow-hidden rounded-full border-2 border-white shadow-md"
         style={side === 'left' ? { right: -(AVA / 2 - 2) } : { left: -(AVA / 2 - 2) }}
       >
-        <img src={IMG} alt="" className="h-full w-full object-cover" />
+        <img src={src} alt="" className="h-full w-full object-cover" />
       </span>
 
       {/* Pilule */}
@@ -193,11 +195,11 @@ function PillAbs({ side = 'left', x, y, title, caption, gradient }) {
 
 /* ===== Mobile only bits ===== */
 
-function PillRow({ title, caption, gradient }) {
+function PillRow({ title, caption, gradient, src }) {
   return (
     <Link href="#" className="group relative inline-flex items-center mt-2">
       <span className="absolute left-5 z-10 h-[88px] w-[88px] overflow-hidden rounded-full border-2 border-white shadow-md">
-        <img src={IMG} alt="" className="h-full w-full object-cover" />
+        <img src={src} alt="" className="h-full w-full object-cover" />
       </span>
       <span
         className={`ml-[36px] w-full rounded-full bg-gradient-to-r ${gradient} px-6 py-4 text-white shadow-md
@@ -214,9 +216,7 @@ function PillRow({ title, caption, gradient }) {
 function MobilePortraitAtEnd() {
   return (
     <div className="mt-4 flex justify-center">
-      <div className="h-[110px] w-[150px] overflow-hidden rounded border border-black/10 bg-white shadow-sm">
-        <img src={IMG} alt="" className="h-full w-full object-cover" />
-      </div>
+        <img src="/assets/jodie_polaroid.png" alt="" className="h-full w-full object-cover" />
     </div>
   );
 }
