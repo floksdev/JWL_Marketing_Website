@@ -28,7 +28,7 @@ export default function AboutSection() {
         {/* Texte */}
         <div>
           <h2 className="text-2xl md:text-3xl font-extrabold leading-tight text-neutral-900">
-            Aider les entreprises ambitieuses à<br className="hidden md:block" />
+            Aider les entreprises ambitieuses à <br className="hidden md:block" />
             booster leur visibilité et leurs ventes
           </h2>
 

@@ -5,8 +5,12 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 import SectionPourquoiIndependant from "@/components/marketing-digital/SectionPourquoiIndependant";
-
-
+import SectionBrandingPacks from "@/components/marketing-digital/SectionsBrandingPacks";
+import SectionSocialMediaPacks from "@/components/marketing-digital/SectionSocialMediaPacks";
+import SectionSinglePack from "@/components/marketing-digital/SectionSinglePack";
+import SectionSeoAuditPacks from "@/components/marketing-digital/SectionSeoAuditPacks";
+import SectionGMBPack from "@/components/marketing-digital/SectionGMBPack";
+import SectionDevCommercialPacks from "@/components/marketing-digital/SectionDevCommercialPacks";
 
 export default function MarketingDigital() {
   return (
@@ -108,6 +112,8 @@ export default function MarketingDigital() {
             </p>
         </SectionAlterne>
 
+        <SectionBrandingPacks/>
+
         <SectionAlterne
             id="stratégie"
             title="La stratégie aux multiples canaux"
@@ -176,6 +182,8 @@ export default function MarketingDigital() {
                 vos objectifs marketing, tout en améliorant votre e-réputation et votre visibilité en ligne.
             </p>
         </SectionAlterne>
+
+        <SectionSocialMediaPacks/>
 
         <SectionAlterne
             id="refonteweb"
@@ -246,6 +254,8 @@ export default function MarketingDigital() {
                 esthétique, fonctionnel et performant et réussir sa stratégie digitale sur internet.
             </p>
         </SectionAlterne>
+
+        <SectionSinglePack/>
 
         <SectionAlterne
             id="visibilité"
@@ -335,6 +345,8 @@ export default function MarketingDigital() {
                 </p>
         </SectionAlterne>
 
+        <SectionSeoAuditPacks/>
+        
         <SectionAlterne
             id="actionmarketing"
             title="Quelles actions marketing adopter pour générer des résultats ?"
@@ -416,6 +428,8 @@ export default function MarketingDigital() {
                 dans l’écosystème IA/GEO.
             </p>
         </SectionAlterne>
+
+        <SectionGMBPack/>
 
         <SectionAlterne
             id="marketingautomation"
@@ -500,6 +514,8 @@ export default function MarketingDigital() {
                 votre business B2B au niveau supérieur.
             </p>
         </SectionAlterne>
+
+        <SectionDevCommercialPacks/>
 
         <Footer/>
     </main>
