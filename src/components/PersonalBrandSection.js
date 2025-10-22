@@ -4,7 +4,7 @@
 const GOLD = '#E8C88F';
 
 export default function PersonalBrandSection({
-  frameImg = '/assets/notfound.jpg',   // visuel “polaroid” (transp. recommandé)
+  frameImg = 'https://www.dropbox.com/scl/fi/tu6s8jaok3st5wjnpt6b8/5-referencement-naturel-jodie-lapaillerie-jwl-marketing.jpg?rlkey=k1mnqjrpo13dgu9pk3ear5n5a&st=9cbh7s7s&raw=1',   // visuel “polaroid” (transp. recommandé)
   heartImg = '/assets/emoji_heart.png',       // décor facultatif
   mediaImg = '/assets/emoji_media.png',       // décor facultatif
   atImg    = '/assets/emoji_at.png',          // décor facultatif

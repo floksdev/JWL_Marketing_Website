@@ -35,7 +35,7 @@ const GMBPack = [
 ];
 
 const DevCompacks = [
-    { title: "Pack Décollage",  href: "/produits/pack-decollage",  quote: "“Plus de contrats, plus de résultats”.", src: "https://www.dropbox.com/scl/fi/v3c8yoh6xy1sk9eb9sjwd/developpement-commercial-b2b-wl-marketing-paca.png?rlkey=74sl37c8pl3rwu1y94vl4t2rb&st=dxu63fji&raw=1" },
+    { title: "Pack Prospection",  href: "/produits/pack-prospection",  quote: "“Plus de contrats, plus de résultats”.", src: "https://www.dropbox.com/scl/fi/v3c8yoh6xy1sk9eb9sjwd/developpement-commercial-b2b-wl-marketing-paca.png?rlkey=74sl37c8pl3rwu1y94vl4t2rb&st=dxu63fji&raw=1" },
     { title: "Pack Salon",  href: "/produits/pack-salon",  quote: "“Là où vos clients vous attendent, soyez présents”.", src: "https://www.dropbox.com/scl/fi/mwpuicoycjdwz1coz4bkv/developpement-commercial-b2b-salon-aix-marseille.png?rlkey=bs5iqkfn37tkq6j357ari9fmq&st=fioa40z5&raw=1" },
     { title: "Pack Formation",  href: "/produits/pack-formation",  quote: "“Développez vos talents, transformez vos compétences”.", src: "https://www.dropbox.com/scl/fi/zsmqeq23j5ij613f5wx2g/formation-aix-marseille-adulte-jwl-marketing.png?rlkey=oqh6lbiw4mq1erswmpa9qe8iy&st=l25zso8s&raw=1" },
 ];
