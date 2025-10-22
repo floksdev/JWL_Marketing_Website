@@ -17,7 +17,7 @@ export default function Home() {
             id="seo-local-aix-en-provence"
             title="Le Marketing digital local à Aix-en-Provence"
             level={1}
-            imageSrc="https://www.dropbox.com/scl/fi/wjj4vihsft8fsz3prsdmh/calisson-modif-transparent.png?rlkey=tlj0jhk83plsjcbp7627yicoh&st=4d4djbyd&raw=1"
+            imageSrc="https://www.dropbox.com/scl/fi/9yyl0cv0u4wkdtgz9jb9b/1-cakisson-modif.png?rlkey=ghan43gnzrai5zevmtufxrl14&st=e7vt2du7&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="none"
