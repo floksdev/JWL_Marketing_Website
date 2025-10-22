@@ -26,7 +26,7 @@ export default function Footer() {
               Pages
             </h3>
             <ul className="space-y-2 text-sm">
-              <Li href="/services">Services</Li>
+              <Li href="/">Accueil</Li>
               <Li href="/marketing-digital">Marketing digital</Li>
               <Li href="/seo-local">SEO Local</Li>
               <Li href="/contact">Contact</Li>
