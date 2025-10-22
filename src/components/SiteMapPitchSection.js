@@ -7,8 +7,8 @@ const GOLD = '#E8C88F';        // liseré/décor doré
 const PINK = '#E3D1C2';        // fond rosé de la section
 
 export default function SiteMapPitchSection({
-  img = '/assets/notfound.jpg',          // image circulaire à droite
-  floralOverlay = '/assets/floral_overlay.png', // optionnel : décor floraux PNG (transparent)
+  img = 'https://www.dropbox.com/scl/fi/4d15r728qlum2zugay7tb/4-marketing-local.png?rlkey=4k2zejdo4adrkhzkdu04nq82b&st=xjejiasi&raw=1',          // image circulaire à droite
+  floralOverlay = 'https://www.dropbox.com/scl/fi/3dcauqqb0vt9f1h2suyt6/4-cadrephoto.png?rlkey=63keexum8axlvdisthjq7r1d3&st=0thykg08&raw=1', // optionnel : décor floraux PNG (transparent)
   showFloral = false,                        // active/désactive l’overlay floral
 }) {
   return (

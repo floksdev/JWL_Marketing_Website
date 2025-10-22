@@ -2,7 +2,7 @@
 'use client';
 
 export default function TrainingTeaser({
-  photo = '/assets/notfound.jpg',
+  photo = 'https://www.dropbox.com/scl/fi/8nslkkek1vi1lcrjqwf39/6-home-page-jwl-marketing-digital.jpeg?rlkey=ovddy29y3gtt0391qqk57p86l&st=gtj10zl2&raw=1',
   logo  = '/assets/signature.png',
   title = "Améliorez votre carrière en vous formant sur la prospection, les méthodes de vente…",
   subtitle = "Un atelier à la demande pour vous aider à atteindre vos objectifs de carrière",
@@ -26,7 +26,7 @@ export default function TrainingTeaser({
           <img
             src={logo}
             alt="JWL Marketing"
-            className="mt-4 h-50 w-auto opacity-90"
+            className="mt-88 md:mt-110 absolute h-50 w-auto opacity-90"
           />
         </div>
 

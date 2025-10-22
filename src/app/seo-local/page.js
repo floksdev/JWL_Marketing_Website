@@ -7,7 +7,7 @@ import Hero from "@/components/seo-local/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 
 
-export default function Home() {
+export default function SeoLocal() {
   return (
     <main className="min-h-screen text-neutral-900">
         {/* HERO */}

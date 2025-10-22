@@ -12,6 +12,7 @@ import SiteMapPitchSection from "@/components/SiteMapPitchSection";
 import PersonalBrandSection from "@/components/PersonalBrandSection";
 import StorytellingSection from "@/components/StorytellingSection";
 import TrainingTeaser from "@/components/TrainingTeaser";
+import QuiSuisJeTeaser from "@/components/QuiSuisJeTeaser";
 
 function ServiceCard({ title, text, img }) {
   return (
@@ -32,12 +33,21 @@ function Review({ text, author }) {
   );
 }
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="min-h-screen text-neutral-900">
       {/* HERO */}
       <Header/>
       <Hero/>
+      <QuiSuisJeTeaser
+        // title="Qui suis-je ?"       // tu peux l’omettre si tu veux un teaser ultra sobre
+        // excerpt="…"                 // idem : met ton pitch court ici
+        href="/qui-suis-je"
+        ctaLabel="Lire la suite"
+        imageSrc="https://www.dropbox.com/scl/fi/kqbi2o0jz5n3r5iyw9ql5/1-jodie-lapaillerie-jwl-marketing.jpeg?rlkey=zcax7jxyfdadoxa30gypd3gd2&st=vbu4lgy2&raw=1"
+        imageAlt="Portrait de Jodie"
+        imageSide="right"              // ou "left"
+      />
       <AlliesSection/>
       <AboutSection/>
       <ServicesHubSection/>

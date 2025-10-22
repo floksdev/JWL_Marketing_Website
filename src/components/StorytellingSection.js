@@ -1,7 +1,7 @@
 // src/components/StorytellingSection.jsx
 'use client';
 
-export default function StorytellingSection({ imgSrc = '/assets/notfound.jpg' }) {
+export default function StorytellingSection({ imgSrc = 'https://www.dropbox.com/scl/fi/tu6s8jaok3st5wjnpt6b8/5-referencement-naturel-jodie-lapaillerie-jwl-marketing.jpg?rlkey=k1mnqjrpo13dgu9pk3ear5n5a&st=9cbh7s7s&raw=1' }) {
   return (
     <section className="w-full py-14 md:py-20">
       <div className="mx-auto max-w-6xl px-6">

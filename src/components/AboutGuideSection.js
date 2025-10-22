@@ -12,7 +12,7 @@ export default function AboutGuideSection() {
           {/* Cercle photo */}
           <div className="absolute inset-0 rounded-full bg-white shadow-sm" />
           <img
-            src="/assets/notfound.jpg"
+            src="https://www.dropbox.com/scl/fi/ldp452vop8kyzbm7t1at7/3-strategie-marketing-jwl-marketing-aix-en-provence.jpg?rlkey=0hs4vz1fdu6owmuuqtaij592j&st=hge858jt&raw=1"
             alt="Jodie — JWL Marketing"
             className="absolute inset-0 h-full w-full rounded-full object-cover"
           />
