@@ -39,6 +39,7 @@ export default function HomePage() {
       {/* HERO */}
       <Header/>
       <Hero/>
+      <AlliesSection/>
       <QuiSuisJeTeaser
         // title="Qui suis-je ?"       // tu peux l’omettre si tu veux un teaser ultra sobre
         // excerpt="…"                 // idem : met ton pitch court ici
@@ -48,7 +49,6 @@ export default function HomePage() {
         imageAlt="Portrait de Jodie"
         imageSide="right"              // ou "left"
       />
-      <AlliesSection/>
       <AboutSection/>
       <ServicesHubSection/>
       <AboutGuideSection/>
