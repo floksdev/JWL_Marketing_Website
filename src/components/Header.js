@@ -39,8 +39,8 @@ export default function Header({ cartCount = 0 }) {
         <div className="hidden md:grid h-20 grid-cols-3 items-center">
           {/* Colonne gauche : nav gauche */}
           <nav className="flex items-center gap-6 text-neutral-900 justify-start">
-            <NavLink href="/services">Services</NavLink>
-            <NavLink href="/marketing-digital">Marketing digital</NavLink>
+            <NavLink href="/">Accueil</NavLink>
+            <NavLink href="/qui-suis-je">Qui-suis-je ?</NavLink>
           </nav>
 
           {/* Colonne centre : logo CENTRÉ */}
@@ -52,6 +52,7 @@ export default function Header({ cartCount = 0 }) {
 
           {/* Colonne droite : nav droite + CTA + panier */}
           <div className="flex items-center gap-6 text-neutral-900 justify-end">
+            <NavLink href="/marketing-digital">Marketing digital</NavLink>
             <NavLink href="/seo-local">SEO Local</NavLink>
             <NavLink href="/contact">Contact</NavLink>
             <Link
@@ -84,9 +85,10 @@ export default function Header({ cartCount = 0 }) {
                 className="mt-2 mb-3 rounded-xl border border-black/10 bg-white shadow-sm"
               >
                 <ul className="flex flex-col gap-1 px-3 py-3 text-sm">
-                  <li><MobileLink href="/services" onClick={close}>Services</MobileLink></li>
+                  <li><MobileLink href="/" onClick={close}>Accueil</MobileLink></li>
                   <li><MobileLink href="/marketing-digital" onClick={close}>Marketing digital</MobileLink></li>
                   <li><MobileLink href="/seo-local" onClick={close}>SEO Local</MobileLink></li>
+                  <li><MobileLink href="/qui-suis-je" onClick={close}>Qui-suis-je ?</MobileLink></li>
                   <li><MobileLink href="/contact" onClick={close}>Contact</MobileLink></li>
                   <li className="mt-2">
                     <Link
