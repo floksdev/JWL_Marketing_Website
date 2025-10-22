@@ -5,10 +5,6 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 import SectionPourquoiIndependant from "@/components/marketing-digital/SectionPourquoiIndependant";
-import SectionSinglePack from "@/components/marketing-digital/SectionSinglePack";
-import SectionSeoAuditPacks from "@/components/marketing-digital/SectionSeoAuditPacks";
-import SectionGMBPack from "@/components/marketing-digital/SectionGMBPack";
-import SectionDevCommercialPacks from "@/components/marketing-digital/SectionDevCommercialPacks";
 import PacksPolaroidSection from "@/components/reusable/PacksPolaroidSection";
 
 const packs = [
