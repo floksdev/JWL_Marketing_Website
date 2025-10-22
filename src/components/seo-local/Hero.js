@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="relative">
       {/* Image de fond */}
       <img
-        src="/assets/hero_local.png"
+        src="/assets/hero_local2.png"
         alt="JWL Marketing - Hero"
         className="h-full w-full object-cover object-center"
       />
