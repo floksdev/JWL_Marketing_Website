@@ -24,7 +24,7 @@ export default function MarketingDigital() {
             id="marketing-digital"
             title="Le marketing digital, c’est quoi ?"
             level={1}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://dl.dropboxusercontent.com/scl/fi/5yrx5ued7z3x6j5bq655n/1-marketing-digital-cest-quoi-jwl-marketing.png?rlkey=v1nfarlxn5ktnr7n7f4cu8qo8&raw=1"
             imageAlt="Jodie qui réfléchit"
             imageSide="right"
             stars={[
@@ -53,7 +53,7 @@ export default function MarketingDigital() {
             id="cibles"
             title="Comment définir les cibles en marketing digital ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/pki4k4bo35plh23vsczft/2-marketing-digital-cibles-jwl-marketing.png?rlkey=pgc31s8uh0jdcsw7c0ktmj0lz&st=y8rlvjzo&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="leftHero"
@@ -71,7 +71,7 @@ export default function MarketingDigital() {
             id="logo"
             title="Créer un logo efficace pour renforcer votre image de marque"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/3y3ixj3le7f4upaaoh9i0/3-referencement-seo-site-web-marketing-jwl-marketing.png?rlkey=tu3eez02iw1cwjtksjrbqsqto&st=csjkbr0s&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="leftHero"
@@ -118,7 +118,7 @@ export default function MarketingDigital() {
             id="stratégie"
             title="La stratégie aux multiples canaux"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/4bbuk5tdmbhjdkvccy9vj/4-marketing-digital-strat-gies-canaux-jwl-marketing.png?rlkey=1ve08qn19pl355aye499jfl4g&st=dsqfgf2b&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="leftHero"
@@ -150,7 +150,7 @@ export default function MarketingDigital() {
             id="marketing-digital"
             title="Quels médias choisir pour une stratégie marketing efficace ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/574gjli68hqclyo0uwor9/5-developpement-commercial-b2b-wl-marketing.png?rlkey=e765gpje2uafc8ik78krea0m8&st=cfff5glf&raw=1"
             imageAlt="Jodie qui réfléchit"
             imageSide="right"
             stars={[
@@ -191,7 +191,7 @@ export default function MarketingDigital() {
             Structurez votre présence en ligne avec JWL
             Marketing"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/cf4mydhx9cj0ruyt2sh06/6-refonte-siteweb-jwl-marketing-aix-en-provence.png?rlkey=m8zdn5fel9dtbzb475c2y3s5x&st=a5otikyc&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="rightHero"
@@ -225,7 +225,7 @@ export default function MarketingDigital() {
             id="créationsite"
             title="Créez un site performant et attractif avec JWL Marketing"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/1d91seibm8je1ky7cttmn/7-ia-jwl-marketing.png?rlkey=7nn9e74cd19h8wsoomlksjbz9&st=qgsa9ya9&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="leftHero"
@@ -261,7 +261,7 @@ export default function MarketingDigital() {
             id="visibilité"
             title="Comment améliorer votre visibilité en ligne ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/io0udvls71ts6lzzlqa92/9-seo-referencement-jwl-marketing.png?rlkey=26gsli85ed5c1ea9kzsaspzt2&st=5rwayj3r&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="leftHero"
@@ -299,7 +299,7 @@ export default function MarketingDigital() {
             id="chatgptougeo"
             title="Le référencement à travers chat GPT ou GEO"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/5bh5kj6n4wsv87wuudx9p/10-seo-geo-referencement-jwm-marketing.png?rlkey=py872eqfop19yf8gbp8y03z6r&st=afn712wn&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="rightHero"
@@ -351,7 +351,7 @@ export default function MarketingDigital() {
             id="actionmarketing"
             title="Quelles actions marketing adopter pour générer des résultats ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/e7qssr8zvna0gq5lwd8ys/11-marketing-digital-r-sultats-jwl-marketing.png?rlkey=arms7gg1p74bbykh7hy7pzq2q&st=vedo2ams&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="rightHero"
@@ -389,7 +389,7 @@ export default function MarketingDigital() {
             id="optimiserprésence"
             title="Optimiser votre présence en ligne avec Google My Business et le SEO ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/5pv8259bon2rc2inecsbr/12-google-gmb-jwl-marketing.png?rlkey=wroymj8xjsx58zlly1yn6nk9k&st=6jnab1n3&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="leftHero"
@@ -435,7 +435,7 @@ export default function MarketingDigital() {
             id="marketingautomation"
             title="Marketing automation : pourquoi et comment l’utiliser pour votre entreprise ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/vk8zfyma8nlm47d1konuq/13-communication-web-digital-jwl-marketing.png?rlkey=avwlpqh3dtulu8vican40lb66&st=t5wj7a5a&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="leftHero"
@@ -466,7 +466,7 @@ export default function MarketingDigital() {
             id="externaliser"
             title="Pourquoi externaliser votre développement commercial ?"
             level={2}
-            imageSrc="/assets/notfound.jpg"
+            imageSrc="https://www.dropbox.com/scl/fi/wg84klcwsravz3nc64q4z/14-marketing-digital-d-veloppement-commercial-jwl-marketing.png?rlkey=u3azykt02oje2ectk8tdymdkd&st=5lo7gg4u&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="rightHero"

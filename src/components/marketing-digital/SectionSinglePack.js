@@ -19,7 +19,7 @@ export default function SectionSinglePack({
             {/* Polaroid */}
               <div className="mt-4 rounded-sm overflow-hidden bg-white">
                 <Image
-                  src="/assets/notfound.jpg"
+                  src="https://www.dropbox.com/scl/fi/1nk5fc2g85ayggmn62wy0/8-arborescence-web-seo-jwl-marketin.png?rlkey=q6i5l0828azec6po9awgywzo4&st=qrl9daxp&raw=1"
                   alt={title}
                   width={800}
                   height={800}
