@@ -5,12 +5,46 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 import SectionPourquoiIndependant from "@/components/marketing-digital/SectionPourquoiIndependant";
-import SectionBrandingPacks from "@/components/marketing-digital/SectionsBrandingPacks";
-import SectionSocialMediaPacks from "@/components/marketing-digital/SectionSocialMediaPacks";
 import SectionSinglePack from "@/components/marketing-digital/SectionSinglePack";
 import SectionSeoAuditPacks from "@/components/marketing-digital/SectionSeoAuditPacks";
 import SectionGMBPack from "@/components/marketing-digital/SectionGMBPack";
 import SectionDevCommercialPacks from "@/components/marketing-digital/SectionDevCommercialPacks";
+import PacksPolaroidSection from "@/components/reusable/PacksPolaroidSection";
+
+const packs = [
+  { title: "Pack visible",  href: "/produits/social-visible",  quote: "“Rédigez, optimiser, briller en ligne”.", src: "https://www.dropbox.com/scl/fi/6sc6cxwukjaqz6wfxw6f0/1-redaction-web-jwl-marketing.png?rlkey=q4vnd1vmvrajvr7fido3f6hi4&st=o4tev2jp&raw=1" },
+  { title: "Pack connecté", href: "/produits/social-connecte", quote: "“Engagez votre audience et créez du lien”.", src: "https://www.dropbox.com/scl/fi/3q0msqug01bdmgtk5vqu9/2-communication-marketing-jwl.png?rlkey=frz0zs91pldl8ux4dxqgk2p7j&st=hriyl005&raw=1" },
+  { title: "Pack Premium",  href: "/produits/social-premium",  quote: "“Soyez vus, et marquez les esprits”.",   src: "https://www.dropbox.com/scl/fi/b5veodejnz5p1kpsf5ud5/3-social-media-jwl-marketing.png?rlkey=00e49zy3q1y98ypm7ywpsz62f&st=fcomanpo&raw=1" },
+];
+
+const singlePack = [
+  { title: "Pack Refonte Web",  href: "/produits/refonte-web", src: "https://www.dropbox.com/scl/fi/1nk5fc2g85ayggmn62wy0/8-arborescence-web-seo-jwl-marketin.png?rlkey=q6i5l0828azec6po9awgywzo4&st=b7gjqmab&raw=1" },
+];
+
+const brandingPacks = [
+    { title: "Logo Essentiel",  href: "/produits/logo-essentiel",  quote: "“Votre identité en toute simplicité”.", src: "https://www.dropbox.com/scl/fi/918t4ai9k57cank4xquqx/1.png?rlkey=3k4c7fykbmkz13p1mzrsck8pc&st=admub9gx&raw=1" },
+    { title: "Logo Impact",  href: "/produits/logo-impact",  quote: "“Pour marquer les esprits”.", src: "https://www.dropbox.com/scl/fi/aaw9ncadrota3nb8pd9b4/2.png?rlkey=3vlmamvjc7hz1frv91azf2n3l&st=tlzf43cx&raw=1" },
+    { title: "Logo Excellence",  href: "/produits/logo-excellence",  quote: "“Votre image sublimée avec élégance”.", src: "https://www.dropbox.com/scl/fi/z1gqqujjqnv5tz4ldwfay/3.png?rlkey=rm3m002yxet5b9j836cox31o0&st=yfiox803&raw=1" },
+];
+
+const AuditPacks = [
+    { title: "Starter Seo",  href: "/produits/starter-seo",  quote: "“Commencez à être vu”.", src: "https://www.dropbox.com/scl/fi/8xhmtic94z389orbgkxe4/1-referencement-naturel-starter-seo-jwl-marketing.png?rlkey=n40qkbmifpn04ajddxkh2ir7d&st=bkd1iaqg&raw=1" },
+    { title: "Booster Seo",  href: "/produits/booster-seo",  quote: "“Votre présence est plus vivante que jamais”.", src: "https://www.dropbox.com/scl/fi/v979kyi8ugzos05yw88xk/2-referencement-naturel-booster-seo-jwl-marketing.png?rlkey=9q00fj9obw424n9is3cpphxv3&st=tga03sqr&raw=1" },
+    { title: "Seo Local",  href: "/produits/seo-local",  quote: "“Dominez votre quartier”.", src: "https://www.dropbox.com/scl/fi/mi15vn60zj25xhngn1tcv/3-referencement-seo-local-jwl-marketing.png?rlkey=uvtts0e5z1l85xr4ywlcthsst&st=m4vni93m&dl=0" },
+];
+
+
+const GMBPack = [
+    { title: "Google My Business",  href: "/produits/gmb",  src: "https://www.dropbox.com/scl/fi/fp44mgf0106v8hby8s598/google-gmb-jwl-marketing.png?rlkey=92f5j101g36sv99budili4774&st=hmsbasuv&raw=1" },
+];
+
+const DevCompacks = [
+    { title: "Pack Décollage",  href: "/produits/pack-decollage",  quote: "“Plus de contrats, plus de résultats”.", src: "https://www.dropbox.com/scl/fi/v3c8yoh6xy1sk9eb9sjwd/developpement-commercial-b2b-wl-marketing-paca.png?rlkey=74sl37c8pl3rwu1y94vl4t2rb&st=dxu63fji&raw=1" },
+    { title: "Pack Salon",  href: "/produits/pack-salon",  quote: "“Là où vos clients vous attendent, soyez présents”.", src: "https://www.dropbox.com/scl/fi/mwpuicoycjdwz1coz4bkv/developpement-commercial-b2b-salon-aix-marseille.png?rlkey=bs5iqkfn37tkq6j357ari9fmq&st=fioa40z5&raw=1" },
+    { title: "Pack Formation",  href: "/produits/pack-formation",  quote: "“Développez vos talents, transformez vos compétences”.", src: "https://www.dropbox.com/scl/fi/zsmqeq23j5ij613f5wx2g/formation-aix-marseille-adulte-jwl-marketing.png?rlkey=oqh6lbiw4mq1erswmpa9qe8iy&st=l25zso8s&raw=1" },
+];
+
+
 
 export default function MarketingDigital() {
   return (
@@ -112,7 +146,7 @@ export default function MarketingDigital() {
             </p>
         </SectionAlterne>
 
-        <SectionBrandingPacks/>
+        <PacksPolaroidSection iconSrc={"/assets/notfound.jpg"} title={"Identité visuelle et Branding"} packs={brandingPacks}/>
 
         <SectionAlterne
             id="stratégie"
@@ -183,7 +217,7 @@ export default function MarketingDigital() {
             </p>
         </SectionAlterne>
 
-        <SectionSocialMediaPacks/>
+        <PacksPolaroidSection iconSrc="/assets/notfound.jpg" title="Social Média" packs={packs}/>
 
         <SectionAlterne
             id="refonteweb"
@@ -255,7 +289,7 @@ export default function MarketingDigital() {
             </p>
         </SectionAlterne>
 
-        <SectionSinglePack/>
+        <PacksPolaroidSection  packs={singlePack}/>
 
         <SectionAlterne
             id="visibilité"
@@ -345,7 +379,7 @@ export default function MarketingDigital() {
                 </p>
         </SectionAlterne>
 
-        <SectionSeoAuditPacks/>
+        <PacksPolaroidSection iconSrc="/assets/notfound.jpg" title="Audit SEO et Rédaction Web" packs={AuditPacks}/>
         
         <SectionAlterne
             id="actionmarketing"
@@ -429,7 +463,7 @@ export default function MarketingDigital() {
             </p>
         </SectionAlterne>
 
-        <SectionGMBPack/>
+        <PacksPolaroidSection iconSrc="/assets/notfound.jpg" title="Google My Business" packs={GMBPack}/>
 
         <SectionAlterne
             id="marketingautomation"
@@ -515,7 +549,7 @@ export default function MarketingDigital() {
             </p>
         </SectionAlterne>
 
-        <SectionDevCommercialPacks/>
+        <PacksPolaroidSection iconSrc="/assets/notfound.jpg" title="Développement commercial" packs={DevCompacks}/>
 
         <Footer/>
     </main>
