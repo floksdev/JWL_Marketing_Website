@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import AlliesSection from "@/components/AlliesSection";
 import AboutSection from "@/components/AboutSection";
@@ -37,7 +35,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen text-neutral-900">
       {/* HERO */}
-      <Header/>
       <Hero/>
       <AlliesSection/>
       <QuiSuisJeTeaser
@@ -57,7 +54,6 @@ export default function HomePage() {
       <PersonalBrandSection/>
       <StorytellingSection/>
       <TrainingTeaser/>
-      <Footer/>
     </main>
   );
 }

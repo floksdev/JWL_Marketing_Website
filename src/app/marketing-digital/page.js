@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 import SectionPourquoiIndependant from "@/components/marketing-digital/SectionPourquoiIndependant";
@@ -45,8 +43,6 @@ const DevCompacks = [
 export default function MarketingDigital() {
   return (
     <main className="min-h-screen text-neutral-900">
-
-        <Header/>
 
         <Hero/>
 
@@ -547,7 +543,6 @@ export default function MarketingDigital() {
 
         <PacksPolaroidSection iconSrc="/assets/notfound.jpg" title="Développement commercial" packs={DevCompacks}/>
 
-        <Footer/>
     </main>
   );
 }

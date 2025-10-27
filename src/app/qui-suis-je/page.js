@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 
@@ -9,7 +7,6 @@ export default function Whoami() {
   return (
     <main className="min-h-screen text-neutral-900">
         {/* HERO */}
-        <Header/>
         <Hero/>
         <SectionAlterne
             id="qui-je-suis"
@@ -115,8 +112,6 @@ export default function Whoami() {
                 certification RNCP, pour délivrer des formations certifiantes et Qualiopi à l’avenir.
             </p>
         </SectionAlterne>
-
-        <Footer/>
     </main>
   );
 }

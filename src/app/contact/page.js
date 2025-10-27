@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ContactTeaser from "@/components/contact/ContactTeaser";
 import ContactSection from "@/components/contact/ContactSection";
@@ -10,7 +8,6 @@ export default function Contact() {
   return (
     <main className="min-h-screen text-neutral-900">
         {/* HERO */}
-        <Header/>
         <Hero/>
         <ContactTeaser
         title="On travaille ensemble ?"
@@ -26,7 +23,6 @@ export default function Contact() {
         // showSeparator={false}
       />
       <ContactSection/>
-        <Footer/>
     </main>
   );
 }

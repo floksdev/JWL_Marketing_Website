@@ -1,6 +1,8 @@
 // src/components/TrainingTeaser.jsx
 'use client';
 
+import PolaroidImage from '@/components/reusable/PolaroidImage';
+
 export default function TrainingTeaser({
   photo = 'https://www.dropbox.com/scl/fi/8nslkkek1vi1lcrjqwf39/6-home-page-jwl-marketing-digital.jpeg?rlkey=ovddy29y3gtt0391qqk57p86l&st=gtj10zl2&raw=1',
   logo  = '/assets/signature.png',
@@ -13,21 +15,11 @@ export default function TrainingTeaser({
     <section className="w-full py-14 md:py-20">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-14">
         {/* Colonne Image */}
-        <div className="flex flex-col items-center">
-          <div className="w-full max-w-[360px] overflow-hidden rounded-md shadow-md">
-            <img
-              src={photo}
-              alt="Visuel formation"
-              className="h-auto w-full object-cover"
-            />
-          </div>
-
-          {/* Logo sous l'image */}
-          <img
-            src={logo}
-            alt="JWL Marketing"
-            className="mt-88 md:mt-110 absolute h-50 w-auto opacity-90"
-          />
+        <div className="flex flex-col items-center gap-4">
+          <PolaroidImage src={photo} alt="Visuel formation" className="w-[260px] sm:w-[320px]" />
+          {logo ? (
+            <img src={logo} alt="JWL Marketing" className="h-12 w-auto" />
+          ) : null}
         </div>
 
         {/* Colonne Texte */}

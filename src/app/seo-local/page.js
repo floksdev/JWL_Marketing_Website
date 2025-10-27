@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/seo-local/Hero";
 // import PacksPolaroidSection from "@/components/reusable/PacksPolaroidSection";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
@@ -11,7 +9,6 @@ export default function SeoLocal() {
   return (
     <main className="min-h-screen text-neutral-900">
         {/* HERO */}
-        <Header/>
         <Hero/>
         <SectionAlterne
             id="seo-local-aix-en-provence"
@@ -326,8 +323,6 @@ export default function SeoLocal() {
                 devient clair, structuré et accessible !
             </p>
         </SectionAlterne>
-
-        <Footer/>
     </main>
   );
 }

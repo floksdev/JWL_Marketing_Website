@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'www.dropbox.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        pathname: '/**',
+      },
     ],
   },
 };

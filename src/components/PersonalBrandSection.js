@@ -1,28 +1,20 @@
 // src/components/PersonalBrandSection.jsx
 'use client';
 
+import PolaroidImage from '@/components/reusable/PolaroidImage';
+
 const GOLD = '#E8C88F';
 
 export default function PersonalBrandSection({
-  frameImg = 'https://www.dropbox.com/scl/fi/tu6s8jaok3st5wjnpt6b8/5-referencement-naturel-jodie-lapaillerie-jwl-marketing.jpg?rlkey=k1mnqjrpo13dgu9pk3ear5n5a&st=9cbh7s7s&raw=1',   // visuel “polaroid” (transp. recommandé)
-  heartImg = '/assets/emoji_heart.png',       // décor facultatif
-  mediaImg = '/assets/emoji_media.png',       // décor facultatif
-  atImg    = '/assets/emoji_at.png',          // décor facultatif
-  doodle   = '/assets/doodle_heart.png',      // petit dessin en bas à droite (optionnel)
-  showDecor = true,
+  frameImg = 'https://www.dropbox.com/scl/fi/tu6s8jaok3st5wjnpt6b8/5-referencement-naturel-jodie-lapaillerie-jwl-marketing.jpg?rlkey=k1mnqjrpo13dgu9pk3ear5n5a&st=9cbh7s7s&raw=1',
+  doodle = '/assets/doodle_heart.png',
 }) {
   return (
     <section className="w-full py-14 md:py-20">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-12">
         {/* Visuel gauche */}
-        <div className="relative mx-auto w-full max-w-[520px]">
-          {/* image principale (polaroid/cadre) */}
-          <img
-            src={frameImg}
-            alt="Exemple de présence de marque personnelle"
-            className="w-full select-none"
-            draggable={false}
-          />
+        <div className="relative mx-auto w-full max-w-[360px] md:max-w-[420px]">
+          <PolaroidImage src={frameImg} alt="Exemple de présence de marque personnelle" className="w-full" />
         </div>
 
         {/* Texte droite */}
