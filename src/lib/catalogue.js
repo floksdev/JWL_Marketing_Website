@@ -65,20 +65,6 @@ const LOGO_MATRIX_ROWS = [
 ];
 
 export const PRODUCTS = [
-  {
-    slug: 'produit-test-stripe',
-    title: 'Produit Test Stripe',
-    category: 'Tests & Démo',
-    image: 'https://placehold.co/400x300.png?text=Test',
-    price: 0.5,
-    rating: 0,
-    reviewsCount: 0,
-    excerpt: 'Produit de test à 0,01 € pour valider le paiement Stripe.',
-    badges: ['Test'],
-    highlights: ['Idéal pour valider l’intégration Stripe'],
-    includes: ['Accès immédiat à la démo'],
-    checkoutHref: '/checkout/produit-test-stripe',
-  },
   /* ------------ LOGO : Essentiel ------------ */
   {
     slug: 'logo-essentiel',
