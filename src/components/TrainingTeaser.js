@@ -17,9 +17,9 @@ export default function TrainingTeaser({
         {/* Colonne Image */}
         <div className="flex flex-col items-center gap-4">
           <PolaroidImage src={photo} alt="Visuel formation" className="w-[260px] sm:w-[320px]" />
-          {logo ? (
-            <img src={logo} alt="JWL Marketing" className="h-12 w-auto" />
-          ) : null}
+          {/* {logo ? (
+            <img src={logo} alt="JWL Marketing" className="h-50 w-auto" />
+          ) : null} */}
         </div>
 
         {/* Colonne Texte */}
