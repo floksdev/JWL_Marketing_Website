@@ -6,7 +6,7 @@ import PolaroidImage from '@/components/reusable/PolaroidImage';
 const GOLD = '#E8C88F';
 
 export default function PersonalBrandSection({
-  frameImg = 'https://www.dropbox.com/scl/fi/tu6s8jaok3st5wjnpt6b8/5-referencement-naturel-jodie-lapaillerie-jwl-marketing.jpg?rlkey=k1mnqjrpo13dgu9pk3ear5n5a&st=9cbh7s7s&raw=1',
+  frameImg = 'https://www.dropbox.com/scl/fi/xhkiu4rkigmtys38h7i90/Jodie-lapaillerie-instagram-jwl-marketing.jpg?rlkey=xmg7h0694gtirt6im3uyxg92i&st=yuzjmwpe&raw=1',
   doodle = '/assets/doodle_heart.png',
 }) {
   return (

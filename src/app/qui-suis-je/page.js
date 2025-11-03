@@ -12,7 +12,7 @@ export default function Whoami() {
             id="qui-je-suis"
             title="Qui je suis ?"
             level={1}
-            imageSrc="https://www.dropbox.com/scl/fi/kqbi2o0jz5n3r5iyw9ql5/1-jodie-lapaillerie-jwl-marketing.jpeg?rlkey=zcax7jxyfdadoxa30gypd3gd2&st=vbu4lgy2&raw=1"
+            imageSrc="https://www.dropbox.com/scl/fi/k3qtse3n5pla210ga942n/Jodie-lapaillerie-consultante-seo-jwl-marketing-13.png?rlkey=3x4samfsmt9ynx4yt5qj4owsy&st=nrfyb1g1&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="none"
@@ -90,7 +90,7 @@ export default function Whoami() {
             id="titre"
             title="Titre..."
             level={2}
-            imageSrc="https://www.dropbox.com/scl/fi/2ao27qpe54gole0or7bjk/3-aix-en-provence-marketing-digital-jodie-lapaillerie-jwl-marketing.jpg?rlkey=zf1ntjezye90bon4wg2okil1f&st=jfqxy8po&raw=1"
+            imageSrc="https://www.dropbox.com/scl/fi/soy8yubupf6qf8i6855nw/unnamed.jpg?rlkey=c5bkh70eslt8yudelj6mo5tej&st=k0ii1vzk&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="left"
             starPreset="none"

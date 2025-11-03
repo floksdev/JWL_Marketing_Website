@@ -4,7 +4,7 @@
 import PolaroidImage from '@/components/reusable/PolaroidImage';
 
 export default function TrainingTeaser({
-  photo = 'https://www.dropbox.com/scl/fi/8nslkkek1vi1lcrjqwf39/6-home-page-jwl-marketing-digital.jpeg?rlkey=ovddy29y3gtt0391qqk57p86l&st=gtj10zl2&raw=1',
+  photo = 'https://www.dropbox.com/scl/fi/0z4sismw9zyiidy1jllbi/Storytelling-reseaux-jwl-marketing.jpg?rlkey=eh0nv9w0jkl0yzi6c6c00a8ue&st=oqtq6ngp&raw=1',
   logo  = '/assets/signature.png',
   title = "Améliorez votre carrière en vous formant sur la prospection, les méthodes de vente…",
   subtitle = "Un atelier à la demande pour vous aider à atteindre vos objectifs de carrière",
