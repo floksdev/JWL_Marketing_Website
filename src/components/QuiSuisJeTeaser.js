@@ -19,7 +19,7 @@ export default function QuiSuisJeTeaser({
     <section className="mx-auto max-w-7xl px-6 py-12">
       <div
         className={clsx(
-          "grid items-center gap-8 lg:gap-12",
+          "grid items-center",
           "grid-cols-1 lg:grid-cols-2",
           imageSide === "right" ? "" : "lg:[&>div:first-child]:order-2"
         )}
@@ -72,7 +72,12 @@ export default function QuiSuisJeTeaser({
         </div>
 
         {/* Colonne image (polaroid léger) */}
-        <div className="flex justify-center lg:justify-end">
+        <div
+          className={clsx(
+            "flex justify-center",
+            imageSide === "right" ? "lg:justify-end" : "lg:justify-start"
+          )}
+        >
           <div className="relative -rotate-1 md:-rotate-2 transition-transform duration-300 hover:rotate-0 hover:-translate-y-0.5">
             {/* “scotchs” */}
             <span

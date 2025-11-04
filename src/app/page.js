@@ -44,7 +44,7 @@ export default function HomePage() {
         ctaLabel="Lire la suite"
         imageSrc="https://www.dropbox.com/scl/fi/6ou8js3ovfnkv5t49u5ps/Jodie-lapaillerie-portrait-jwl-marketing-aix.png?rlkey=1xamn3ibfd0u7h2zvbvjguf0m&st=w265w3eo&raw=1"
         imageAlt="Portrait de Jodie"
-        imageSide="right"              // ou "left"
+        imageSide="left"              // ou "left"
       />
       <AboutSection/>
       <ServicesHubSection/>

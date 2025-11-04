@@ -91,7 +91,7 @@ export default function ServicesHubSection() {
           title="Social Média"
           caption="Contenu • Mots clés • Conversion"
           gradient="from-[#5B58CC] to-[#4744A3]"
-          src="/assets/notfound.jpg"
+          src="https://www.dropbox.com/scl/fi/sbnt8uuss027gi3cov2j3/2-marketing-digital-strat-gies-canaux-jwl-marketing.png?rlkey=oxcvs22rtlwpwwspfz6z2e1ux&st=uhlfgw9u&raw=1"
         />
 
         {/* Ligne 3 (alignée comme la 1) */}

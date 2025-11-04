@@ -78,7 +78,7 @@ export default function AboutSection() {
             <img
               src="/assets/jodie2.jpeg"           // ➜ place l’image dans /public/assets/about/jodie.jpg
               alt="Jodie - JWL Marketing"
-              className="h-full w-full rounded-full object-cover"
+              className="h-full w-full rounded-full object-cover object-top"
             />
             {/* signature en bas */}
             <img

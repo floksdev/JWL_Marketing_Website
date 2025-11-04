@@ -10,7 +10,7 @@ export default function Whoami() {
         <Hero/>
         <SectionAlterne
             id="qui-je-suis"
-            title="Qui je suis ?"
+            title="Qui suis-je ?"
             level={1}
             imageSrc="https://www.dropbox.com/scl/fi/k3qtse3n5pla210ga942n/Jodie-lapaillerie-consultante-seo-jwl-marketing-13.png?rlkey=3x4samfsmt9ynx4yt5qj4owsy&st=nrfyb1g1&raw=1"
             imageAlt="Ciblage marketing"
@@ -53,17 +53,17 @@ export default function Whoami() {
         </SectionAlterne>
 
          <SectionAlterne
-            id="titre"
-            title="Titre..."
+            id="nouveau-chapitre"
+            title="Nouveau chapitre, nouvelle énergie"
             level={2}
-            imageSrc="https://www.dropbox.com/scl/fi/nvlca0a073m5jbto2g065/2-communication-digitale-jwl-marketing.png?rlkey=swxk52vdsom9edtoroioeqt1g&st=10savq6x&raw=1"
+            imageSrc="https://www.dropbox.com/scl/fi/q6kz76vk3cxep45iw9iys/jodie-lapaillerie-jwl-marketing-aix-en-provence-paca.png?rlkey=571jrd7tio3tl8b6xomxb0enw&st=h01ggkx3&raw=1"
             imageAlt="Ciblage marketing"
             imageSide="right"
             starPreset="none"
             Circle={false}
             >
             <p>
-            Il y a trois ans, tout a basculé. Mon poste de commerciale chez IAC a sauté pendant le grand
+            Il y a quelques années, tout a basculé. Mon poste de commerciale chez IAC a sauté pendant le grand
             ménage Covid : licenciement économique, services fermés les uns après les autres. Sur le
             moment, j’
             ai encaissé en mode pilote automatique, mais en coulisses ça moulinait. Trois ans à
@@ -87,8 +87,8 @@ export default function Whoami() {
         </SectionAlterne>
         
         <SectionAlterne
-            id="titre"
-            title="Titre..."
+            id="collaboration"
+            title="Parce qu’on ne collabore pas par hasard"
             level={2}
             imageSrc="https://www.dropbox.com/scl/fi/soy8yubupf6qf8i6855nw/unnamed.jpg?rlkey=c5bkh70eslt8yudelj6mo5tej&st=k0ii1vzk&raw=1"
             imageAlt="Ciblage marketing"
