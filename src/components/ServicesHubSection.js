@@ -142,7 +142,7 @@ function CenterAbsolute({ x, y }) {
       <span aria-hidden className="absolute inset-0 rounded-full" style={{ boxShadow: `inset 0 0 0 6px ${GOLD}` }} />
       <img src="/assets/personna_judie.png" alt="Jodie - Consultante" className="h-full w-full rounded-full object-cover" />
       <div className="absolute left-1/2 top-[260px] w-[260px] -translate-x-1/2 text-center">
-        <p className="text-[18px] font-extrabold leading-5">Jodie LAPIALLERIE</p>
+        <p className="text-[18px] font-extrabold leading-5">Jodie LAPAILLERIE</p>
         <p className="text-[13px]" style={{ color: GOLD }}>Consultante</p>
       </div>
       {/* plus bas sur desktop */}
