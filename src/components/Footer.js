@@ -1,69 +1,74 @@
 import Link from "next/link";
+import GoogleReviews from "@/components/reusable/GoogleReviews";
+
 
 const BTN_BG = "#D6C1B0";       // plus foncé que #E3D1C2
 // hover via CSS (pas de handlers) : on joue sur brightness/opacity
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-[#E3D1C2]">
-      <div className="mx-auto max-w-7xl px-4 py-10">
-        {/* Top */}
-        <div className="grid gap-8 md:grid-cols-3">
-          {/* Bloc légal images */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold tracking-wide text-neutral-900">
-              Informations
-            </h3>
-            <p className="text-sm leading-relaxed text-neutral-600">
-              Toutes les images présentes sur ce site sont la propriété de JWL Marketing.
-              Toute reproduction, même partielle, est interdite sans autorisation.
-            </p>
-          </div>
+    <>
+    <GoogleReviews/>
+      <footer className="border-t bg-[#E3D1C2]">
+        <div className="mx-auto max-w-7xl px-4 py-10">
+          {/* Top */}
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Bloc légal images */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold tracking-wide text-neutral-900">
+                Informations
+              </h3>
+              <p className="text-sm leading-relaxed text-neutral-600">
+                Toutes les images présentes sur ce site sont la propriété de JWL Marketing.
+                Toute reproduction, même partielle, est interdite sans autorisation.
+              </p>
+            </div>
 
-          {/* Pages */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold tracking-wide text-neutral-900">
-              Pages
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <Li href="/">Accueil</Li>
-              <Li href="/marketing-digital">Marketing digital</Li>
-              <Li href="/seo-local">SEO Local</Li>
-              <Li href="/contact">Contact</Li>
-            </ul>
-          </div>
+            {/* Pages */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold tracking-wide text-neutral-900">
+                Pages
+              </h3>
+              <ul className="space-y-2 text-sm">
+                <Li href="/">Accueil</Li>
+                <Li href="/marketing-digital">Marketing digital</Li>
+                <Li href="/seo-local">SEO Local</Li>
+                <Li href="/contact">Contact</Li>
+              </ul>
+            </div>
 
-          {/* Légal + Réseaux */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold tracking-wide text-neutral-900">
-              Légal & Réseaux
-            </h3>
-            <ul className="mb-4 space-y-2 text-sm">
-              <Li href="/mentions-legales">Mentions légales</Li>
-              <Li href="/cgv">Conditions Générales de Vente (CGV)</Li>
-              <Li href="/confidentialite">Politique de confidentialité</Li>
-            </ul>
+            {/* Légal + Réseaux */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold tracking-wide text-neutral-900">
+                Légal & Réseaux
+              </h3>
+              <ul className="mb-4 space-y-2 text-sm">
+                <Li href="/mentions-legales">Mentions légales</Li>
+                <Li href="/cgv">Conditions Générales de Vente (CGV)</Li>
+                <Li href="/confidentialite">Politique de confidentialité</Li>
+              </ul>
 
-            <div className="flex flex-wrap gap-2">
-              <IconButton href="https://www.linkedin.com/" label="LinkedIn">
-                <LinkedInIcon />
-              </IconButton>
-              <IconButton href="https://www.facebook.com/" label="Facebook">
-                <FacebookIcon />
-              </IconButton>
-              <IconButton href="/blog" label="Blog">
-                <BlogIcon />
-              </IconButton>
+              <div className="flex flex-wrap gap-2">
+                <IconButton href="https://www.linkedin.com/" label="LinkedIn">
+                  <LinkedInIcon />
+                </IconButton>
+                <IconButton href="https://www.facebook.com/" label="Facebook">
+                  <FacebookIcon />
+                </IconButton>
+                <IconButton href="/blog" label="Blog">
+                  <BlogIcon />
+                </IconButton>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Bottom */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t pt-6 text-center text-sm text-neutral-600 md:flex-row md:text-left">
-          <p>© {new Date().getFullYear()} JWL Marketing — Tous droits réservés.</p>
+          {/* Bottom */}
+          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t pt-6 text-center text-sm text-neutral-600 md:flex-row md:text-left">
+            <p>© {new Date().getFullYear()} JWL Marketing — Tous droits réservés.</p>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
 
