@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Foorter from "@/components/Footer";
@@ -23,6 +24,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className={`bg-[#F8F8F8] ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <CartProvider>
           <div className="flex min-h-screen flex-col">

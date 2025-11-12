@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 
 export default function GoogleReviews() {
   const [reviews, setReviews] = useState([]);
   const sliderRef = useRef(null);
+  const frameRef = useRef(null);
+  const [duplicationFactor, setDuplicationFactor] = useState(2);
 
   useEffect(() => {
     async function loadReviews() {
@@ -22,22 +24,50 @@ export default function GoogleReviews() {
   }, []);
 
   useEffect(() => {
-    if (!sliderRef.current) return;
-    const slider = sliderRef.current;
-    let position = 0;
+    if (!reviews.length) return;
 
-    const animate = () => {
-      position -= 0.5; // vitesse (0.5px par frame)
-      if (position <= -slider.scrollWidth / 2) position = 0; // reset invisible
-      slider.style.transform = `translateX(${position}px)`;
-      requestAnimationFrame(animate);
+    const CARD_WIDTH = 384; // approx card width incl. gap for layout calc
+    const computeFactor = () => {
+      const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+      const baseWidth = Math.max(1, reviews.length) * CARD_WIDTH;
+      const needed = Math.ceil((viewportWidth * 2) / baseWidth);
+      setDuplicationFactor(Math.max(2, needed));
     };
 
-    requestAnimationFrame(animate);
+    computeFactor();
+    window.addEventListener("resize", computeFactor);
+    return () => window.removeEventListener("resize", computeFactor);
   }, [reviews]);
 
-  // double pour effet infini
-  const duplicated = [...reviews, ...reviews];
+  useEffect(() => {
+    if (!sliderRef.current || !reviews.length) return;
+    const slider = sliderRef.current;
+    let position = 0;
+    const singleLoopWidth = slider.scrollWidth / duplicationFactor;
+
+    const animate = () => {
+      position -= 0.6;
+      if (Math.abs(position) >= singleLoopWidth) {
+        position = 0;
+      }
+      slider.style.transform = `translate3d(${position}px, 0, 0)`;
+      frameRef.current = requestAnimationFrame(animate);
+    };
+
+    slider.style.transform = "translate3d(0,0,0)";
+    frameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
+  }, [reviews, duplicationFactor]);
+
+  const duplicated = useMemo(() => {
+    if (!reviews.length) return [];
+    return Array.from({ length: duplicationFactor })
+      .map(() => reviews)
+      .flat();
+  }, [reviews, duplicationFactor]);
 
   return (
     <section

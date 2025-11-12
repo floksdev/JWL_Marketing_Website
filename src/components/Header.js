@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaSearch } from 'react-icons/fa';
@@ -13,6 +14,13 @@ const HEADER_STYLE = {
   backgroundColor: BG,
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
+};
+
+const buildCalendlyUrl = () => {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  return `https://calendly.com/contact-jwlmarketing/test?back=1&month=${year}-${month}`;
 };
 
 const PRODUCT_ALIAS_OVERRIDES = {
@@ -30,11 +38,14 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showCalendly, setShowCalendly] = useState(false);
+  const [calendlyUrl, setCalendlyUrl] = useState(buildCalendlyUrl());
   const { count: cartCount } = useCart();
   const toggle = () => setOpen(v => !v);
   const close  = () => setOpen(false);
   const desktopInputRef = useRef(null);
   const desktopContainerRef = useRef(null);
+  const calendlyButtonClasses = 'hidden whitespace-nowrap rounded-full bg-neutral-900 px-4 py-2 text-sm text-white transition hover:bg-neutral-800 md:inline-flex';
 
   const handleDesktopToggle = () => {
     setSearchOpen(prev => {
@@ -100,6 +111,20 @@ export default function Header() {
       desktopInputRef.current.focus();
     }
   }, [searchOpen]);
+
+  const openCalendlyPopup = () => {
+    setCalendlyUrl(buildCalendlyUrl());
+    setShowCalendly(true);
+  };
+
+  useEffect(() => {
+    if (!showCalendly) return undefined;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [showCalendly]);
 
   useEffect(() => {
     if (!searchOpen) return undefined;
@@ -205,12 +230,13 @@ export default function Header() {
           <div className="flex items-center gap-5 text-neutral-900 justify-end">
             <NavLink href="/boutique">Boutique</NavLink>
             <NavLink href="/contact">Contact</NavLink>
-            <Link
-              href="/contact"
-              className="hidden whitespace-nowrap rounded-full bg-neutral-900 px-4 py-2 text-sm text-white hover:bg-neutral-800 md:inline-flex"
+            <button
+              type="button"
+              onClick={openCalendlyPopup}
+              className={calendlyButtonClasses}
             >
               Prendre RDV
-            </Link>
+            </button>
             <CartButton count={cartCount} />
           </div>
         </div>
@@ -264,18 +290,30 @@ export default function Header() {
                   <li><MobileLink href="/seo-local" onClick={close}>SEO Local</MobileLink></li>
                   <li><MobileLink href="/contact" onClick={close}>Contact</MobileLink></li>
                   <li className="mt-2">
-                    <Link
-                      href="/contact"
-                      onClick={close}
-                      className="block rounded-full bg-neutral-900 px-4 py-2 text-center text-white hover:bg-neutral-800"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        close();
+                        openCalendlyPopup();
+                      }}
+                      className="block w-full rounded-full bg-neutral-900 px-4 py-2 text-center text-white transition hover:bg-neutral-800"
                     >
                       Prendre RDV
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </motion.div>
             </motion.nav>
           )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {showCalendly ? (
+            <CalendlyModal
+              url={calendlyUrl}
+              onClose={() => setShowCalendly(false)}
+            />
+          ) : null}
         </AnimatePresence>
       </motion.div>
     </header>
@@ -324,6 +362,60 @@ function SearchResultsList({ results, onNavigate, variant = 'desktop', query = '
         </li>
       ))}
     </ul>
+  );
+}
+
+function CalendlyModal({ url, onClose }) {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
+
+  if (!isBrowser) return null;
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/30 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Prendre rendez-vous"
+      onMouseDown={event => {
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 12 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-4xl rounded-3xl bg-white shadow-2xl ring-1 ring-black/5"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-black text-2xl text-white shadow-lg transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/50"
+          aria-label="Fermer la fenêtre Calendly"
+        >
+          ×
+        </button>
+        <div className="rounded-3xl border border-black/5 bg-white p-4 pt-16 sm:pt-20">
+          <iframe
+            src={url}
+            className="h-[70vh] w-full rounded-2xl border-0"
+            title="Calendly - JWL Marketing"
+            loading="lazy"
+          />
+        </div>
+      </motion.div>
+    </motion.div>,
+    document.body
   );
 }
 
