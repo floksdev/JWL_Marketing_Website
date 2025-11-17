@@ -12,6 +12,7 @@ export default function ContactSection({
 }) {
   const [loading, setLoading] = useState(false);
   const [ok, setOk] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const [err, setErr] = useState('');
   const [consent, setConsent] = useState(false);
 
@@ -19,8 +20,10 @@ export default function ContactSection({
     e.preventDefault();
     setErr('');
     setOk(false);
+    setSuccessMessage('');
 
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     // honeypot
     if (fd.get('website')) return;
 
@@ -41,12 +44,16 @@ export default function ContactSection({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Object.fromEntries(fd)),
       });
-      if (!res.ok) throw new Error('send failed');
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || 'Impossible d’envoyer votre message.');
+      }
       setOk(true);
-      (e.currentTarget).reset();
+      setSuccessMessage(data?.message || 'Merci ! Votre message a bien été envoyé. Un e-mail de confirmation vient de vous être adressé.');
+      form.reset();
       setConsent(false);
     } catch (e_) {
-      setErr("Oups, l’envoi a échoué. Je n'ai pas encore intégré cette fonctionnalité");
+      setErr(e_?.message || 'Oups, l’envoi a échoué. Merci de réessayer ou contactez service@jwl-marketing.fr.');
     } finally {
       setLoading(false);
     }
@@ -111,7 +118,7 @@ export default function ContactSection({
           {err && <p className="text-sm text-red-600">{err}</p>}
           {ok && (
             <p className="text-sm text-green-700">
-              Merci ! Votre message a bien été envoyé. Un e-mail de confirmation vient de vous être adressé.
+              {successMessage || 'Merci ! Votre message a bien été envoyé. Un e-mail de confirmation vient de vous être adressé.'}
             </p>
           )}
 

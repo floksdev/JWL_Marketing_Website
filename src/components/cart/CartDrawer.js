@@ -35,9 +35,16 @@ function formatPrice(value) {
 export default function CartDrawer() {
   const { items, isOpen, closeCart, total, count, removeItem, updateQuantity, clearCart } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [acceptedCGV, setAcceptedCGV] = useState(false);
+  const [termsError, setTermsError] = useState('');
 
   const handleCheckout = async () => {
     if (!items.length || isProcessing) return;
+    if (!acceptedCGV) {
+      setTermsError('Merci de confirmer avoir lu et accepté les CGV.');
+      return;
+    }
+    setTermsError('');
     setIsProcessing(true);
 
     try {
@@ -233,11 +240,28 @@ export default function CartDrawer() {
                 <button
                   type="button"
                   onClick={handleCheckout}
-                  disabled={!items.length || isProcessing}
+                  disabled={!items.length || isProcessing || !acceptedCGV}
                   className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-emerald-300"
                 >
                   {isProcessing ? 'Redirection…' : 'Procéder au paiement'}
                 </button>
+                <label className="flex items-start gap-3 text-sm text-neutral-700">
+                  <input
+                    type="checkbox"
+                    checked={acceptedCGV}
+                    onChange={(event) => setAcceptedCGV(event.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-neutral-300 text-neutral-900 focus:ring-neutral-900"
+                  />
+                  <span>
+                    J’ai lu et j’accepte les{' '}
+                    <Link href="/cgv" className="font-semibold underline">
+                      Conditions Générales de Vente
+                    </Link>.
+                  </span>
+                </label>
+                {termsError ? (
+                  <p className="text-xs text-red-600">{termsError}</p>
+                ) : null}
                 <Link
                   href="/cart"
                   onClick={closeCart}

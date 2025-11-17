@@ -4,6 +4,7 @@ import { PRODUCTS } from '@/lib/catalogue';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
 import { getProductStatsMap, getReviewsForOrder } from '@/lib/supabase/products';
 import OrderReviewSection from '@/components/boutique/OrderReviewSection';
+import { sendOrderConfirmationEmail } from '@/lib/email/orderConfirmation';
 
 export const metadata = {
   title: 'Merci pour votre commande — JWL Marketing',
@@ -22,6 +23,23 @@ function formatOrderNumber(value) {
   const num = Number(value);
   if (Number.isNaN(num)) return null;
   return String(num).padStart(3, '0');
+}
+
+const merciPageBaseUrl = process.env.MERCI_PAGE_URL || process.env.STRIPE_SUCCESS_URL || 'http://localhost:3000/merci';
+
+function buildOrderLink(orderNumber) {
+  if (!orderNumber) return null;
+  if (!merciPageBaseUrl) return `/merci?order=${orderNumber}`;
+
+  try {
+    const url = new URL(merciPageBaseUrl);
+    url.search = '';
+    url.hash = '';
+    url.searchParams.set('order', orderNumber);
+    return url.toString();
+  } catch {
+    return `/merci?order=${orderNumber}`;
+  }
 }
 
 export default async function MerciPage({ searchParams }) {
@@ -112,9 +130,40 @@ export default async function MerciPage({ searchParams }) {
           .single();
 
         if (createError) {
-          console.error('Supabase order insert failed:', createError);
+          if (createError.code === '23505') {
+            const { data: duplicateOrder } = await supabase
+              .from('orders')
+              .select('id, order_number, items, total_cents, currency, email')
+              .eq('session_id', sessionIdParam)
+              .maybeSingle();
+            if (duplicateOrder) {
+              orderRecord = duplicateOrder;
+            }
+          } else {
+            console.error('Supabase order insert failed:', createError);
+          }
         } else {
           orderRecord = createdOrder;
+          const customerEmail = session.customer_details?.email ?? null;
+
+          if (customerEmail) {
+            const formattedNumber = formatOrderNumber(createdOrder?.order_number);
+            const absoluteOrderLink = buildOrderLink(formattedNumber);
+
+            try {
+              await sendOrderConfirmationEmail({
+                to: customerEmail,
+                customerName: session.customer_details?.name ?? null,
+                orderNumber: formattedNumber ?? createdOrder?.order_number?.toString() ?? sessionIdParam,
+                orderLink: absoluteOrderLink,
+                items: simplifiedItems,
+                totalCents: session.amount_total ?? createdOrder?.total_cents ?? 0,
+                currency: session.currency ?? createdOrder?.currency ?? 'eur',
+              });
+            } catch (emailError) {
+              console.error('Order confirmation email failed:', emailError);
+            }
+          }
         }
       }
     } catch (error) {
