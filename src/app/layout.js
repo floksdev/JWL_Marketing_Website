@@ -19,6 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "JWL Marketing",
   description: "JWL Marketing - Votre partenaire en marketing digital",
+    icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
