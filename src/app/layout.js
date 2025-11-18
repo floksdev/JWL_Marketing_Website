@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "JWL Marketing",
   description: "JWL Marketing - Votre partenaire en marketing digital",
-  icons: {
+    icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -34,7 +34,6 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://assets.calendly.com/assets/external/widget.css"
         />
-
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -48,17 +47,12 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="afterInteractive"
         />
       </head>
-
-      <body
-        className={`bg-[#F8F8F8] ${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* --- GTM NOSCRIPT (juste après ouverture du body) --- */}
+      <body className={`bg-[#F8F8F8] ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PZ96DBWV"
@@ -67,11 +61,12 @@ export default function RootLayout({ children }) {
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-
         <CartProvider>
           <div className="flex min-h-screen flex-col">
             <Header />
-            <div className="flex-1">{children}</div>
+            <div className="flex-1">
+              {children}
+            </div>
             <Foorter />
           </div>
           <CartDrawer />
