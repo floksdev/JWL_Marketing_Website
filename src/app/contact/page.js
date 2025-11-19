@@ -1,12 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
 import Hero from "@/components/Hero";
 import ContactTeaser from "@/components/contact/ContactTeaser";
 import ContactSection from "@/components/contact/ContactSection";
 
+export const metadata = {
+  title: "Contact — JWL Marketing",
+  description: "Planifiez un rendez-vous ou contactez JWL Marketing pour un accompagnement marketing digital et SEO local.",
+};
+
 export default function Contact() {
   return (
     <main className="min-h-screen text-neutral-900">
+        <header className="sr-only">
+          <h1>Contactez JWL Marketing pour vos projets marketing digital</h1>
+        </header>
         {/* HERO */}
         <Hero/>
         <ContactTeaser

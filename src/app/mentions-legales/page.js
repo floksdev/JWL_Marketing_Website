@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Mentions légales — JWL Marketing",
+  description: "Informations légales, coordonnées et SIRET de JWL Marketing, éditrice du site.",
+};
+
 export default function MentionsLegalesPage() {
   const infos = [
     { label: "Raison sociale", value: "JWL Marketing – Auto-entrepreneur" },

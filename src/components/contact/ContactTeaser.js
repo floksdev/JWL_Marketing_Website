@@ -49,9 +49,9 @@ export default function ContactTeaser({
           <p className="mt-6 text-[17px] leading-7 text-neutral-900">
             {lead}{" "}
             {linkHref && (
-              <a className="underline underline-offset-4">
+              <Link href={linkHref} className="underline underline-offset-4">
                 {linkLabel}
-              </a>
+              </Link>
             )}
           </p>
 

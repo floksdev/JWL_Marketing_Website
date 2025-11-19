@@ -8,6 +8,7 @@ import { sendOrderConfirmationEmail } from '@/lib/email/orderConfirmation';
 
 export const metadata = {
   title: 'Merci pour votre commande — JWL Marketing',
+  description: 'Confirmation de commande, récapitulatif de paiement et accès à votre espace client JWL Marketing.',
 };
 
 function formatAmount(amount, currency = 'eur') {

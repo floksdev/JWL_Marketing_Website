@@ -12,6 +12,12 @@ import StorytellingSection from "@/components/StorytellingSection";
 import TrainingTeaser from "@/components/TrainingTeaser";
 import QuiSuisJeTeaser from "@/components/QuiSuisJeTeaser";
 
+export const metadata = {
+  title: "Marketing digital & SEO local à Aix-en-Provence — JWL Marketing",
+  description:
+    "Accompagnement marketing digital, SEO local et branding à Aix-en-Provence pour les artisans, commerçants et entreprises ambitieuses.",
+};
+
 function ServiceCard({ title, text, img }) {
   return (
     <div className="rounded-xl border bg-white p-6 shadow-sm transition hover:shadow-md">
@@ -34,6 +40,9 @@ function Review({ text, author }) {
 export default function HomePage() {
   return (
     <main className="min-h-screen text-neutral-900">
+      <header className="sr-only">
+        <h1>JWL Marketing : consultante marketing digital et SEO local à Aix-en-Provence</h1>
+      </header>
       {/* HERO */}
       <Hero/>
       <AlliesSection/>

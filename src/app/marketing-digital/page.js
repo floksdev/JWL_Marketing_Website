@@ -5,6 +5,12 @@ import SectionAlterne from "@/components/reusable/SectionAlterne";
 import SectionPourquoiIndependant from "@/components/marketing-digital/SectionPourquoiIndependant";
 import PacksPolaroidSection from "@/components/reusable/PacksPolaroidSection";
 
+export const metadata = {
+  title: "Marketing digital sur-mesure — JWL Marketing",
+  description:
+    "Stratégie marketing digital, création de contenus et packs social media pensés pour les indépendants et PME à Aix-en-Provence.",
+};
+
 const packs = [
   { title: "Pack visible",  href: "/produits/social-visible",  quote: "“Rédigez, optimiser, briller en ligne”.", src: "https://www.dropbox.com/scl/fi/6sc6cxwukjaqz6wfxw6f0/1-redaction-web-jwl-marketing.png?rlkey=q4vnd1vmvrajvr7fido3f6hi4&st=o4tev2jp&raw=1" },
   { title: "Pack connecté", href: "/produits/social-connecte", quote: "“Engagez votre audience et créez du lien”.", src: "https://www.dropbox.com/scl/fi/3q0msqug01bdmgtk5vqu9/2-communication-marketing-jwl.png?rlkey=frz0zs91pldl8ux4dxqgk2p7j&st=hriyl005&raw=1" },

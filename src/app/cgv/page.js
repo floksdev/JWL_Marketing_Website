@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Conditions Générales de Vente — JWL Marketing",
+  description: "Consultez les conditions générales de vente applicables aux prestations et packs commercialisés par JWL Marketing.",
+};
+
 export default function CgvPage() {
   const sections = [
     {

@@ -3,6 +3,11 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 
+export const metadata = {
+  title: "Qui suis-je — JWL Marketing",
+  description: "Découvrez le parcours de Jodie, consultante marketing digital et SEO local basée à Aix-en-Provence.",
+};
+
 export default function Whoami() {
   return (
     <main className="min-h-screen text-neutral-900">

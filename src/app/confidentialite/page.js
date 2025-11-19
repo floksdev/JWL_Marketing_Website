@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Politique de confidentialité — JWL Marketing",
+  description: "Transparence sur la collecte, l’usage et la conservation des données personnelles traitées par JWL Marketing.",
+};
+
 export default function ConfidentialitePage() {
   const sections = [
     {

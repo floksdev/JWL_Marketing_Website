@@ -4,6 +4,11 @@ import Link from "next/link";
 import { PRODUCTS as _PRODUCTS, CATEGORIES as _CATEGORIES } from "@/lib/catalogue";
 import { getProductStatsMap } from "@/lib/supabase/products";
 
+export const metadata = {
+  title: "Boutique — JWL Marketing",
+  description: "Packs marketing digital, branding et SEO prêts à être achetés en ligne avec paiement sécurisé.",
+};
+
 const GOLD  = "#E8C88F";
 const TAUPE = "rgb(186,151,134)";
 

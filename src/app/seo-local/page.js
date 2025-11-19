@@ -4,6 +4,12 @@ import Hero from "@/components/seo-local/Hero";
 // import PacksPolaroidSection from "@/components/reusable/PacksPolaroidSection";
 import SectionAlterne from "@/components/reusable/SectionAlterne";
 
+export const metadata = {
+  title: "SEO local à Aix-en-Provence — JWL Marketing",
+  description:
+    "Optimisation Google Business Profile, contenus locaux et parcours client pour booster la visibilité des commerces aixois.",
+};
+
 
 export default function SeoLocal() {
   return (
