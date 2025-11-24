@@ -175,7 +175,7 @@ function buildHtmlBody({
               ${
                 orderLink
                   ? `<p style="margin:24px 0 0;text-align:right;">
-                      <a href="${orderLink}" style="font-size:14px;color:${brandColor};text-decoration:none;font-weight:600;">Consulter votre reçu en ligne →</a>
+                      <a href="${orderLink}" style="font-size:14px;color:#363636;text-decoration:none;font-weight:600;">Consulter votre reçu en ligne →</a>
                     </p>`
                   : ''
               }
