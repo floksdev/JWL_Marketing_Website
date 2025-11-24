@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import crypto from 'crypto';
 import { stripe } from '@/lib/stripe';
 import { PRODUCTS } from '@/lib/catalogue';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
 import { getProductStatsMap, getReviewsForOrder } from '@/lib/supabase/products';
 import OrderReviewSection from '@/components/boutique/OrderReviewSection';
+import CahierDesChargesModal from '@/components/boutique/CahierDesChargesModal';
 import { sendOrderConfirmationEmail } from '@/lib/email/orderConfirmation';
+import { buildOrderLink, formatOrderNumber } from '@/lib/orders';
+import { isAdminRequest } from '@/lib/auth/admin';
 
 export const metadata = {
   title: 'Merci pour votre commande — JWL Marketing',
@@ -19,34 +23,12 @@ function formatAmount(amount, currency = 'eur') {
   }).format(amount / 100);
 }
 
-function formatOrderNumber(value) {
-  if (value == null) return null;
-  const num = Number(value);
-  if (Number.isNaN(num)) return null;
-  return String(num).padStart(3, '0');
-}
-
-const merciPageBaseUrl = process.env.MERCI_PAGE_URL || process.env.STRIPE_SUCCESS_URL || 'http://localhost:3000/merci';
-
-function buildOrderLink(orderNumber) {
-  if (!orderNumber) return null;
-  if (!merciPageBaseUrl) return `/merci?order=${orderNumber}`;
-
-  try {
-    const url = new URL(merciPageBaseUrl);
-    url.search = '';
-    url.hash = '';
-    url.searchParams.set('order', orderNumber);
-    return url.toString();
-  } catch {
-    return `/merci?order=${orderNumber}`;
-  }
-}
-
 export default async function MerciPage({ searchParams }) {
   const params = await searchParams;
   const sessionIdParam = params?.session_id ?? null;
   const orderNumberParam = params?.order ?? null;
+  const tokenParam = params?.token ?? null;
+  const isAdminViewer = await isAdminRequest();
 
   const supabase = getSupabaseAdmin();
 
@@ -62,7 +44,7 @@ export default async function MerciPage({ searchParams }) {
       if (!Number.isNaN(orderNumberValue)) {
         const { data: orderByNumber, error } = await supabase
           .from('orders')
-          .select('id, order_number, items, total_cents, currency, email')
+          .select('id, order_number, items, total_cents, currency, email, form_status, form_sections, form_payload, form_access_token, form_updated_at')
           .eq('order_number', orderNumberValue)
           .maybeSingle();
 
@@ -105,9 +87,9 @@ export default async function MerciPage({ searchParams }) {
 
       reviewSourceItems = simplifiedItems;
 
-      const { data: existingOrder, error: existingOrderError } = await supabase
+        const { data: existingOrder, error: existingOrderError } = await supabase
         .from('orders')
-        .select('id, order_number, items, total_cents, currency, email')
+        .select('id, order_number, items, total_cents, currency, email, form_status, form_sections, form_payload, form_access_token, form_updated_at')
         .eq('session_id', sessionIdParam)
         .maybeSingle();
 
@@ -118,25 +100,72 @@ export default async function MerciPage({ searchParams }) {
       if (existingOrder) {
         orderRecord = existingOrder;
       } else {
-        const { data: createdOrder, error: createError } = await supabase
-          .from('orders')
-          .insert({
-            session_id: sessionIdParam,
-            email: session.customer_details?.email ?? null,
-            currency: session.currency,
-            total_cents: session.amount_total ?? 0,
-            items: simplifiedItems,
-          })
-          .select('id, order_number, items, total_cents, currency, email')
-          .single();
+        const newAccessToken = crypto.randomBytes(24).toString('hex');
+        let createdOrder = null;
+        let createError = null;
+
+        // Primary path: use transactional RPC if available
+        const rpcResult = await supabase.rpc('create_order_with_number', {
+          p_session_id: sessionIdParam,
+          p_email: session.customer_details?.email ?? null,
+          p_currency: session.currency ?? 'eur',
+          p_total_cents: session.amount_total ?? 0,
+          p_items: simplifiedItems,
+          p_form_status: 'progress',
+          p_form_sections: {},
+          p_form_payload: {},
+          p_form_access_token: newAccessToken,
+        });
+        createdOrder = rpcResult.data;
+        createError = rpcResult.error;
+
+        const rpcUnavailable = createError && (createError.code === 'PGRST202' || /Could not find the function/i.test(createError.message ?? ''));
+
+        // Fallback to legacy insert if RPC not deployed yet
+        if (rpcUnavailable) {
+          let fallbackOrderNumber = null;
+          try {
+            const { data: lastOrder } = await supabase
+              .from('orders')
+              .select('order_number')
+              .order('order_number', { ascending: false, nullsFirst: false })
+              .limit(1)
+              .maybeSingle();
+            const lastNumber = Number(lastOrder?.order_number);
+            fallbackOrderNumber = Number.isFinite(lastNumber) ? lastNumber + 1 : 1;
+          } catch (counterError) {
+            console.warn('Legacy order number fallback failed, defaulting to timestamp-based value:', counterError);
+            fallbackOrderNumber = Number(new Date().getTime().toString().slice(-6));
+          }
+
+          const legacyResult = await supabase
+            .from('orders')
+            .insert({
+              session_id: sessionIdParam,
+              order_number: fallbackOrderNumber,
+              email: session.customer_details?.email ?? null,
+              currency: session.currency,
+              total_cents: session.amount_total ?? 0,
+              items: simplifiedItems,
+              form_status: 'progress',
+              form_sections: {},
+              form_payload: {},
+              form_access_token: newAccessToken,
+            })
+            .select('id, order_number, items, total_cents, currency, email, form_status, form_sections, form_payload, form_access_token, form_updated_at')
+            .single();
+
+          createdOrder = legacyResult.data;
+          createError = legacyResult.error;
+        }
 
         if (createError) {
-          if (createError.code === '23505') {
-            const { data: duplicateOrder } = await supabase
-              .from('orders')
-              .select('id, order_number, items, total_cents, currency, email')
-              .eq('session_id', sessionIdParam)
-              .maybeSingle();
+            if (createError.code === '23505') {
+              const { data: duplicateOrder } = await supabase
+                .from('orders')
+                .select('id, order_number, items, total_cents, currency, email, form_status, form_sections, form_payload, form_access_token, form_updated_at')
+                .eq('session_id', sessionIdParam)
+                .maybeSingle();
             if (duplicateOrder) {
               orderRecord = duplicateOrder;
             }
@@ -149,7 +178,7 @@ export default async function MerciPage({ searchParams }) {
 
           if (customerEmail) {
             const formattedNumber = formatOrderNumber(createdOrder?.order_number);
-            const absoluteOrderLink = buildOrderLink(formattedNumber);
+            const absoluteOrderLink = buildOrderLink(formattedNumber, createdOrder?.form_access_token);
 
             try {
               await sendOrderConfirmationEmail({
@@ -157,6 +186,7 @@ export default async function MerciPage({ searchParams }) {
                 customerName: session.customer_details?.name ?? null,
                 orderNumber: formattedNumber ?? createdOrder?.order_number?.toString() ?? sessionIdParam,
                 orderLink: absoluteOrderLink,
+                formLink: absoluteOrderLink,
                 items: simplifiedItems,
                 totalCents: session.amount_total ?? createdOrder?.total_cents ?? 0,
                 currency: session.currency ?? createdOrder?.currency ?? 'eur',
@@ -176,6 +206,17 @@ export default async function MerciPage({ searchParams }) {
     if (Array.isArray(orderRecord.items)) {
       reviewSourceItems = orderRecord.items;
     }
+  }
+
+  if (orderRecord && !orderRecord.form_access_token) {
+    const refreshedToken = crypto.randomBytes(24).toString('hex');
+    const { data: updatedOrder } = await supabase
+      .from('orders')
+      .update({ form_access_token: refreshedToken })
+      .eq('id', orderRecord.id)
+      .select('form_access_token')
+      .single();
+    orderRecord.form_access_token = updatedOrder?.form_access_token || refreshedToken;
   }
 
   const reviewMap = new Map();
@@ -218,11 +259,22 @@ export default async function MerciPage({ searchParams }) {
   const currency = session?.currency ?? orderRecord?.currency ?? 'eur';
   const totalCents = session?.amount_total ?? orderRecord?.total_cents ?? null;
   const recipientEmail = session?.customer_details?.email ?? orderRecord?.email ?? null;
+  const orderAccessToken = orderRecord?.form_access_token ?? null;
+  const tokenMatches = Boolean(tokenParam && orderAccessToken && tokenParam === orderAccessToken);
+  const viewerIsSessionOwner = Boolean(sessionIdParam && orderRecord);
+  const viewerCanManage = isAdminViewer || viewerIsSessionOwner || tokenMatches;
+  const formStatus = orderRecord?.form_status ?? 'todo';
+  const formSections = orderRecord?.form_sections ?? {};
+  const formPayload = orderRecord?.form_payload ?? {};
+  const formUpdatedAt = orderRecord?.form_updated_at ?? null;
+  const formAccessToken = viewerCanManage ? orderAccessToken : (isAdminViewer ? orderAccessToken : null);
+  const canReview = isAdminViewer || viewerCanManage;
 
   const summaryItems = reviewSourceItems;
   const hasSummary = summaryItems.length > 0;
 
-  const directLink = orderNumber ? `/merci?order=${orderNumber}` : null;
+  const directLink = orderNumber ? buildOrderLink(orderNumber, orderAccessToken) : null;
+  const showReviewSection = Boolean(orderRecord?.id && reviewItems.length && canReview);
 
   return (
     <main className="mx-auto min-h-[60vh] max-w-4xl px-6 py-16">
@@ -294,6 +346,33 @@ export default async function MerciPage({ searchParams }) {
         </p>
       )}
 
+      {orderRecord ? (
+        <section className="mt-10">
+          <CahierDesChargesModal
+            orderId={orderRecord.id}
+            canManage={viewerCanManage}
+            isAdmin={isAdminViewer}
+            accessToken={formAccessToken}
+            initialResponses={formPayload}
+            initialStatuses={formSections}
+            status={formStatus}
+            lastUpdate={formUpdatedAt}
+          />
+        </section>
+      ) : null}
+
+      {showReviewSection ? (
+        <section className="mt-10">
+          <OrderReviewSection
+            orderId={orderRecord.id}
+            orderNumber={orderNumber}
+            items={reviewItems}
+            canReview={canReview}
+            accessToken={formAccessToken}
+          />
+        </section>
+      ) : null}
+
       <div className="mt-10 flex flex-wrap items-center gap-3">
         <Link
           href="/boutique"
@@ -308,12 +387,6 @@ export default async function MerciPage({ searchParams }) {
           Besoin d’aide ? Contacte-moi
         </Link>
       </div>
-
-      {orderRecord?.id && reviewItems.length ? (
-        <section className="mt-12">
-          <OrderReviewSection orderId={orderRecord.id} orderNumber={orderNumber} items={reviewItems} />
-        </section>
-      ) : null}
     </main>
   );
 }

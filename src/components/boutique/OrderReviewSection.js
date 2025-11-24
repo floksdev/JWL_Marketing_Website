@@ -20,7 +20,7 @@ function StarButton({ value, current, onChange, disabled }) {
   );
 }
 
-export default function OrderReviewSection({ orderId, orderNumber, items }) {
+export default function OrderReviewSection({ orderId, orderNumber, items, canReview = false, accessToken = null }) {
   const initialState = useMemo(() => {
     const map = new Map();
     for (const item of items) {
@@ -58,6 +58,9 @@ export default function OrderReviewSection({ orderId, orderNumber, items }) {
       if (!Number.isFinite(entry.rating) || entry.rating < 1) {
         throw new Error('Sélectionnez une note entre 1 et 5.');
       }
+      if (!canReview) {
+        throw new Error('Accès restreint.');
+      }
 
       const response = await fetch('/api/reviews', {
         method: 'POST',
@@ -66,6 +69,7 @@ export default function OrderReviewSection({ orderId, orderNumber, items }) {
           orderId,
           productSlug: slug,
           rating: entry.rating,
+          accessToken,
         }),
       });
 
@@ -145,7 +149,7 @@ export default function OrderReviewSection({ orderId, orderNumber, items }) {
                       value={value}
                       current={entry.rating}
                       onChange={(rating) => updateEntry(item.slug, (prev) => ({ ...prev, rating, error: null }))}
-                      disabled={isLoading}
+                      disabled={isLoading || !canReview}
                     />
                   ))}
                 </div>
@@ -153,7 +157,7 @@ export default function OrderReviewSection({ orderId, orderNumber, items }) {
                   <button
                     type="button"
                     onClick={() => handleSubmit(item.slug)}
-                    disabled={isLoading || entry.rating < 1}
+                    disabled={isLoading || entry.rating < 1 || !canReview}
                     className={`inline-flex items-center justify-center rounded-full px-4 py-1.5 font-medium text-white transition ${
                       status === 'success' ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-neutral-900 hover:bg-neutral-800'
                     } disabled:cursor-not-allowed disabled:bg-neutral-300`}
@@ -165,6 +169,9 @@ export default function OrderReviewSection({ orderId, orderNumber, items }) {
                   ) : null}
                   {status === 'success' ? (
                     <span className="text-xs text-emerald-600">Merci !</span>
+                  ) : null}
+                  {!canReview ? (
+                    <span className="text-xs text-neutral-500">Accès requis</span>
                   ) : null}
                 </div>
               </div>

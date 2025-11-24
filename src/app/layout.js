@@ -5,6 +5,7 @@ import Foorter from "@/components/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
+import { isAdminRequest } from "@/lib/auth/admin";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.jwlmarketing.fr";
 
@@ -57,7 +58,8 @@ export const viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const hasAdminSession = await isAdminRequest();
   return (
     <html lang="fr">
       <head>
@@ -102,7 +104,7 @@ export default function RootLayout({ children }) {
         </noscript>
         <CartProvider>
           <div className="flex min-h-screen flex-col">
-            <Header />
+            <Header isAdmin={hasAdminSession} />
             <div className="flex-1">
               {children}
             </div>

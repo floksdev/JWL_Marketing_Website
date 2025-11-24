@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase/server';
 import { upsertProductReview } from '@/lib/supabase/products';
+import { isAdminRequest } from '@/lib/auth/admin';
 
 function sanitizeRating(value) {
   const num = Number(value);
@@ -12,7 +13,7 @@ function sanitizeRating(value) {
 
 export async function POST(request) {
   try {
-    const { orderId, productSlug, rating, comment } = await request.json();
+    const { orderId, productSlug, rating, comment, accessToken } = await request.json();
 
     const safeRating = sanitizeRating(rating);
     if (!orderId || !productSlug || !safeRating) {
@@ -22,7 +23,7 @@ export async function POST(request) {
     const supabase = getSupabaseAdmin();
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .select('id, items')
+      .select('id, items, form_access_token')
       .eq('id', orderId)
       .maybeSingle();
 
@@ -33,6 +34,13 @@ export async function POST(request) {
 
     if (!order) {
       return NextResponse.json({ error: 'Commande introuvable.' }, { status: 404 });
+    }
+
+    const isAdmin = await isAdminRequest();
+    const tokenMatches = Boolean(accessToken && order.form_access_token && accessToken === order.form_access_token);
+
+    if (!isAdmin && !tokenMatches) {
+      return NextResponse.json({ error: 'Accès non autorisé.' }, { status: 403 });
     }
 
     const items = Array.isArray(order.items) ? order.items : [];

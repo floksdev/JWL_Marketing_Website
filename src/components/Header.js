@@ -34,7 +34,7 @@ const PRODUCT_ALIAS_OVERRIDES = {
   'logo-premium': ['pack premium', 'logo haut de gamme'],
 };
 
-export default function Header() {
+export default function Header({ isAdmin = false }) {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -171,7 +171,12 @@ export default function Header() {
             </Link>
           </div>
 
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-3">
+            {isAdmin ? (
+              <Link href="/admin" className="text-sm font-semibold text-neutral-900 underline">
+                Admin
+              </Link>
+            ) : null}
             <CartButton count={cartCount} />
           </div>
         </div>
@@ -183,6 +188,7 @@ export default function Header() {
             <NavLink href="/">Accueil</NavLink>
             <NavLink href="/marketing-digital">Marketing digital</NavLink>
             <NavLink href="/seo-local">SEO Local</NavLink>
+            {isAdmin ? <NavLink href="/admin">Admin</NavLink> : null}
             <div ref={desktopContainerRef} className="relative hidden items-center lg:flex">
               <button
                 type="button"
@@ -288,6 +294,9 @@ export default function Header() {
                   <li><MobileLink href="/boutique" onClick={close}>Boutique</MobileLink></li>
                   <li><MobileLink href="/marketing-digital" onClick={close}>Marketing digital</MobileLink></li>
                   <li><MobileLink href="/seo-local" onClick={close}>SEO Local</MobileLink></li>
+                  {isAdmin ? (
+                    <li><MobileLink href="/admin" onClick={close}>Admin</MobileLink></li>
+                  ) : null}
                   <li><MobileLink href="/contact" onClick={close}>Contact</MobileLink></li>
                   <li className="mt-2">
                     <button

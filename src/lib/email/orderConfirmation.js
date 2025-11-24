@@ -5,7 +5,7 @@ import { sendMail } from './mailer';
 const salonFont = '"Playfair Display", "Georgia", serif';
 const bodyFont = '"SF Pro Display", "Helvetica Neue", Arial, sans-serif';
 const calendlyUrl = process.env.CALENDLY_URL || 'https://calendly.com/contact-jwlmarketing/test';
-const brandColor = '#a0604c';
+const brandColor = '#ffffff';
 
 function resolveSiteOrigin() {
   const fallback = process.env.SITE_BASE_URL
@@ -22,9 +22,8 @@ function resolveSiteOrigin() {
 }
 
 const siteOrigin = resolveSiteOrigin();
-const logoUrl = process.env.EMAIL_LOGO_URL || `${siteOrigin}/assets/logo_medium.png`;
 const heroImageUrl = process.env.EMAIL_HERO_IMAGE_URL
-  || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80';
+  || 'https://www.dropbox.com/scl/fi/gdl7bsujf2f15250vyfyb/hero_wallpaper_5.png?rlkey=nhos2xxaoip63qs2u36njrpi9&st=4i2ne6sw&raw=1';
 
 function formatCurrency(amountInCents, currency = 'EUR') {
   if (!Number.isFinite(amountInCents)) {
@@ -55,10 +54,14 @@ function buildItemsSummary(items, currency) {
     });
 }
 
-function buildTextBody({ salutation, subjectOrderLabel, summaryLines, formattedTotal, orderLink }) {
+function buildTextBody({ salutation, subjectOrderLabel, summaryLines, formattedTotal, orderLink, formLink, serviceName }) {
+  const serviceLine = serviceName
+    ? `Votre prestation ${serviceName} est maintenant lancée et nous démarrons ensemble la prochaine étape.`
+    : 'Votre prestation est maintenant lancée et nous démarrons ensemble la prochaine étape.';
   return `${salutation}
 
-Votre commande est bien enregistrée${subjectOrderLabel}. Merci pour votre confiance et bienvenue dans l’univers de JWL Marketing.
+Merci pour votre commande et bienvenue dans l’univers JWL Marketing.
+${serviceLine}
 
 Récapitulatif :
 ${summaryLines}
@@ -66,18 +69,20 @@ ${summaryLines}
 Total : ${formattedTotal}
 ${orderLink ? `Votre reçu en ligne : ${orderLink}` : ''}
 
-1. Remplir et renvoyer les documents :
-- Téléchargez le cahier des charges joint, complétez-le avec précision puis renvoyez-le à service@jwl-marketing.fr dans un délai de 30 jours ouvrés.
+Étape 1 – Remplir le cahier des charges :
+Il nous permet de comprendre vos attentes, votre marché et vos priorités.
+${formLink ? `Complétez-le dès maintenant : ${formLink}` : 'Complétez le cahier des charges via votre espace client.'}
 
-2. Réserver votre visioconférence :
-- Dès que le cahier des charges est envoyé, réservez votre échange via notre calendrier en ligne : ${calendlyUrl}
+Étape 2 – Réserver votre visio :
+Une fois le cahier des charges terminé, choisissez votre créneau pour notre échange personnalisé.
+Calendrier : ${calendlyUrl}
 
-Chez JWL Marketing, nous prenons le temps de comprendre vos enjeux afin de préparer un audit et une prestation sur-mesure. Pour toute question : service@jwl-marketing.fr.
+Ce que vous pouvez attendre de JWL Marketing : une organisation moderne, des outils qui simplifient tout et surtout un accompagnement humain, stratégique et authentique.
 
-Merci encore pour votre confiance.
+La technologie simplifie. L’humain transforme.
 
-Cordialement,
-Jodie Lapaillerie`;
+À très vite,
+Jodie Lapaillerie — JWL Marketing`;
 }
 
 function buildHeroBlock() {
@@ -102,128 +107,119 @@ function buildHeroBlock() {
   `;
 }
 
-function buildHtmlBody({ salutation, subjectOrderLabel, itemSummaries, formattedTotal, orderLink }) {
-  const itemsList = itemSummaries
-    .map((item) => `<tr><td style="padding:6px 0;font-weight:500;">${item.label}</td><td style="padding:6px 0;color:#6d5e55;">× ${item.quantity}</td><td style="padding:6px 0;text-align:right;font-weight:600;">${item.total}</td></tr>`)
+function buildHtmlBody({
+  salutation,
+  subjectOrderLabel,
+  itemSummaries,
+  formattedTotal,
+  orderLink,
+  formLink,
+  serviceName,
+}) {
+  const serviceLine = serviceName
+    ? `Votre prestation ${serviceName} est maintenant lancée et je suis ravie de vous accompagner dans cette nouvelle étape !`
+    : 'Votre prestation est maintenant lancée et je suis ravie de vous accompagner dans cette nouvelle étape !';
+  const orderNumberLabel = subjectOrderLabel ? subjectOrderLabel.trim() : '—';
+
+  const summaryItemsHtml = itemSummaries
+    .map(
+      (item) => `
+        <tr>
+          <td style="padding:12px 0;">
+            <p style="margin:0;font-size:16px;color:#818388;">${item.label}</p>
+            <p style="margin:4px 0 0;font-size:22px;color:#131312;">${item.total}</p>
+          </td>
+          <td style="padding:12px 0;text-align:right;">
+            <p style="margin:0;font-size:16px;color:#818388;">Quantité</p>
+            <p style="margin:4px 0 0;font-size:18px;color:#131312;">× ${item.quantity}</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="border-bottom:1px solid #e4e4e4;height:1px;"></td>
+        </tr>
+      `
+    )
     .join('');
 
   return `
-  <div style="background:#faf6f8;padding:32px;">
-  <div style="max-width:820px;margin:0 auto;background:#ffffff;border-radius:28px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.06);font-family:${bodyFont};color:#333;">
-    
-    <!-- HEADER -->
-    <div style="padding:24px 36px;border-bottom:1px solid #f0e8eb;text-align:center;">
-      ${logoUrl 
-        ? `<img src="${logoUrl}" alt="JWL Marketing" style="height:54px;width:auto;display:inline-block;" />`
-        : `<p style="margin:0;font-size:20px;font-weight:600;color:#d9a4b3;">JWL Marketing</p>`
-      }
+    <div style="background:#ededed;padding:24px;font-family:${bodyFont};color:#131312;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:20px;overflow:hidden;">
+        <tr>
+          <td style="padding:32px 40px 60px;background-image:url('${heroImageUrl}');background-size:cover;background-position:center;background-repeat:no-repeat;">
+            <div style="height:48px;"></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:40px 48px 32px;">
+            <p style="margin:0 0 12px;font-size:20px;color:#818388;">${salutation}</p>
+            <p style="margin:0;font-size:44px;line-height:54px;letter-spacing:-1px;color:#131312;">Votre commande${subjectOrderLabel ? ` ${subjectOrderLabel}` : ''} est confirmée !</p>
+            <p style="margin:18px 0 28px;font-size:20px;line-height:30px;color:#616269;">Merci pour votre confiance et bienvenue dans l’univers JWL Marketing. ${serviceLine}</p>
+
+            <div style="background:#fafafa;border-radius:24px;padding:32px;">
+              <p style="margin:0 0 24px;font-size:30px;font-weight:600;">Récapitulatif</p>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:20px;">
+                <tr>
+                  <td style="padding:0 0 20px;color:#818388;">Numéro de commande</td>
+                  <td style="padding:0 0 20px;color:#131312;text-align:right;">${orderNumberLabel}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 20px;border-bottom:1px solid #dadada;color:#818388;">Total réglé</td>
+                  <td style="padding:0 0 20px;border-bottom:1px solid #dadada;color:#131312;text-align:right;">${formattedTotal}</td>
+                </tr>
+              </table>
+
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:28px;">
+                ${summaryItemsHtml}
+              </table>
+
+              ${
+                orderLink
+                  ? `<p style="margin:24px 0 0;text-align:right;">
+                      <a href="${orderLink}" style="font-size:14px;color:${brandColor};text-decoration:none;font-weight:600;">Consulter votre reçu en ligne →</a>
+                    </p>`
+                  : ''
+              }
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 16px 16px;">
+            <div style="border-radius:24px;background:#131312;color:#ffffff;padding:40px 32px;">
+              <p style="margin:0 0 16px;font-size:32px;line-height:40px;letter-spacing:-1px;font-weight:600;text-align:left;">On passe à l’action ?</p>
+              <p style="margin:0 0 28px;font-size:16px;line-height:24px;color:#c3c3c3;text-align:left;">
+                Complétez votre cahier des charges puis choisissez un créneau pour lancer notre échange personnalisé.
+              </p>
+              <div style="text-align:left;">
+                ${
+                  formLink
+                    ? `<p style="margin:0 0 8px 0;font-weight:600;">1. Compléter le cahier des charges</p>
+                        <a href="${formLink}" style="display:inline-block;margin-bottom:20px;padding:16px 28px;border-radius:999px;background:${brandColor};color:#131312;font-weight:600;text-decoration:none;">Accéder au cahier des charges</a>`
+                    : ''
+                }
+                <p style="margin:0 0 8px 0;font-weight:600;">${formLink ? '2.' : '1.'} Réserver votre visio</p>
+                <a href="${calendlyUrl}" style="display:inline-block;padding:16px 28px;border-radius:999px;background:#d9a4b3;color:#131312;font-weight:600;text-decoration:none;">Prendre Rendez-vous</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:40px 48px 32px;">
+            <p style="margin:0 0 16px;color:#6d6e73;font-size:16px;line-height:26px;">
+              Une organisation moderne, des outils qui simplifient tout… Mais surtout : un accompagnement humain, stratégique et authentique. Chaque prestation est conçue pour vous apporter un résultat concret, adapté et efficace.
+            </p>
+            <p style="margin:0;font-size:18px;color:#131312;font-weight:600;">La technologie simplifie. L’humain transforme.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:24px;background:#f5f2f3;text-align:center;color:#777;font-size:13px;border-top:1px solid #ececec;">
+            <p style="margin:0 0 6px;font-size:15px;font-weight:600;color:#333;">JWL Marketing</p>
+            <p style="margin:0 0 10px;color:#555;">Jodie Lapaillerie | Aix-en-Provence</p>
+            <p style="margin:0;font-size:13px;">📞 07 83 79 28 14 &nbsp;•&nbsp; ✉️ service@jwl-marketing.fr</p>
+            <p style="margin:10px 0 0;font-size:11px;color:#999;">SIRET 893 154 389 00012 — Conditions Générales sur www.jwl-marketing.fr</p>
+          </td>
+        </tr>
+      </table>
     </div>
-
-    <!-- HERO -->
-    <div style="position:relative;">
-      <img src="${heroImageUrl}" alt="Hero" style="width:100%;max-height:260px;object-fit:cover;display:block;" />
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.45),rgba(0,0,0,0.05));display:flex;align-items:flex-end;padding:36px;">
-        <div style="color:#fff;">
-          <p style="font-size:36px;margin:0;font-family:${salonFont};">Merci pour votre confiance</p>
-          <p style="margin:10px 0 0;font-size:16px;opacity:0.92;">Votre commande est confirmée.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTENT -->
-    <div style="padding:40px 48px;">
-      <p style="margin:0 0 12px;font-size:15px;color:#777;">${salutation}</p>
-      <p style="margin:0;font-size:18px;font-weight:600;">Votre commande a bien été enregistrée${subjectOrderLabel}.</p>
-      <p style="margin:16px 0 24px;font-size:16px;line-height:1.6;">
-        Merci pour votre confiance et bienvenue dans l’univers de JWL Marketing. 
-        Vous venez de valider le lancement d’une <strong>analyse stratégique sur mesure</strong>.
-      </p>
-
-      <!-- SECTIONS -->
-      <div style="margin-bottom:24px;">
-        <p style="margin:0 0 8px;font-size:13px;letter-spacing:0.08em;color:#d9a4b3;text-transform:uppercase;font-weight:600;">
-          Dans ce mail, vous trouverez :
-        </p>
-        <ul style="margin:0;padding-left:20px;color:#555;line-height:1.6;">
-          <li>Votre ticket d’achat</li>
-          <li>Votre fiche client signée</li>
-          <li>Votre cahier des charges à compléter</li>
-        </ul>
-      </div>
-
-      <!-- RECAP BLOCK -->
-      <div style="border:1px solid #f0e8eb;border-radius:18px;padding:20px 24px;background:#fff;">
-        <p style="margin:0 0 10px;font-weight:600;font-size:15px;">Récapitulatif commande</p>
-
-        <table style="width:100%;border-collapse:collapse;">
-          ${itemSummaries.map(i => `
-            <tr>
-              <td style="padding:6px 0;font-weight:500;">${i.label}</td>
-              <td style="padding:6px 0;color:#777;">× ${i.quantity}</td>
-              <td style="padding:6px 0;text-align:right;font-weight:600;">${i.total}</td>
-            </tr>
-          `).join('')}
-        </table>
-
-        <p style="margin:18px 0 0;text-align:right;font-size:17px;font-weight:600;color:#333;">
-          Total : ${formattedTotal}
-        </p>
-
-        ${orderLink ? `
-        <p style="margin:6px 0 0;text-align:right;">
-          <a href="${orderLink}" style="color:#d9a4b3;text-decoration:none;font-weight:500;">
-            Consulter votre reçu en ligne ›
-          </a>
-        </p>` : ''}
-      </div>
-
-      <!-- STEP 1 -->
-      <div style="margin-top:32px;">
-        <p style="margin:0 0 6px;font-weight:600;font-size:16px;">1. Remplir et renvoyer les documents</p>
-        <p style="margin:0;color:#555;">
-          Téléchargez le cahier des charges joint puis envoyez-le à 
-          <a href="mailto:service@jwl-marketing.fr" style="color:#d9a4b3;text-decoration:none;">service@jwl-marketing.fr</a>.
-        </p>
-      </div>
-
-      <!-- STEP 2 -->
-      <div style="margin-top:24px;">
-        <p style="margin:0 0 6px;font-weight:600;font-size:16px;">2. Réserver votre visioconférence</p>
-        <p style="margin:0;color:#555;">
-          Une fois le cahier des charges transmis, choisissez votre créneau.
-        </p>
-        <p style="margin:12px 0 0;">
-          <a href="${calendlyUrl}" style="padding:12px 24px;border-radius:999px;background:#d9a4b3;color:white;text-decoration:none;font-weight:600;">
-            Prendre RDV
-          </a>
-        </p>
-      </div>
-
-      <p style="margin:28px 0 14px;color:#555;line-height:1.6;">
-        Nous prenons le temps de comprendre vos enjeux afin de lancer un audit SEO efficace.
-      </p>
-      <p style="margin:0;color:#777;">
-        Une question ? Répondez simplement à cet e-mail.
-      </p>
-    </div>
-
-    <!-- FOOTER -->
-    <div style="background:#f5f2f3;padding:24px;text-align:center;color:#777;">
-      <p style="margin:0 0 4px;font-size:15px;font-weight:600;color:#333;">Merci encore pour votre confiance.</p>
-      <p style="margin:0 0 16px;">À très vite pour donner vie à votre projet !</p>
-      <p style="margin:0;font-weight:600;color:#333;">Cordialement,</p>
-      <p style="margin:6px 0 12px;">Jodie Lapaillerie — JWL Marketing</p>
-
-      <p style="margin:0;font-size:13px;">
-        📞 07.83.79.28.14 &nbsp;•&nbsp; 📍 Aix-en-Provence &nbsp;•&nbsp; ✉️ service@jwl-marketing.fr
-      </p>
-      <p style="margin:8px 0 0;font-size:11px;color:#999;">
-        SIRET 893 154 389 00012 — Conditions Générales sur www.jwl-marketing.fr
-      </p>
-    </div>
-
-  </div>
-</div>
   `;
 }
 
@@ -232,6 +228,7 @@ export async function sendOrderConfirmationEmail({
   customerName,
   orderNumber,
   orderLink,
+  formLink,
   items = [],
   totalCents,
   currency = 'EUR',
@@ -246,6 +243,7 @@ export async function sendOrderConfirmationEmail({
   const subject = `Confirmation de commande${subjectOrderLabel}`;
   const salutation = customerName ? `Bonjour ${customerName},` : 'Bonjour,';
   const summaryLines = itemSummaries.map((item) => `- ${item.label} x${item.quantity} — ${item.total}`).join('\n');
+  const primaryServiceName = itemSummaries[0]?.label ?? '';
 
   const textBody = buildTextBody({
     salutation,
@@ -253,6 +251,8 @@ export async function sendOrderConfirmationEmail({
     summaryLines,
     formattedTotal,
     orderLink,
+    formLink: formLink || orderLink,
+    serviceName: primaryServiceName,
   });
 
   const htmlBody = buildHtmlBody({
@@ -261,6 +261,8 @@ export async function sendOrderConfirmationEmail({
     itemSummaries,
     formattedTotal,
     orderLink,
+    formLink: formLink || orderLink,
+    serviceName: primaryServiceName,
   });
 
   const message = {
