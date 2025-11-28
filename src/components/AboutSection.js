@@ -76,7 +76,7 @@ export default function AboutSection() {
             />
             {/* photo */}
             <img
-              src="/assets/jodie2.jpeg"           // ➜ place l’image dans /public/assets/about/jodie.jpg
+              src="https://www.dropbox.com/scl/fi/fk2dey3pnxa2uhdlg0bc5/jodie-jwlmarketing-strategies-commerce-b2b.jpeg?rlkey=3mr0yyyekscncpn5f1hoaydsr&st=5zsq86sv&raw=1"
               alt="Jodie - JWL Marketing"
               className="h-full w-full rounded-full object-cover object-top"
             />

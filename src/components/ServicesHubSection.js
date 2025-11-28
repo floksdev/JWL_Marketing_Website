@@ -63,6 +63,7 @@ export default function ServicesHubSection() {
           caption="Stratégies • Optimisation • Référencement"
           gradient="from-[#386CC7] to-[#2F5AAC]"
           src="/assets/auditseo.png"
+          href="/boutique/seo-starter"
         />
         <PillAbs
           side="right"
@@ -72,6 +73,7 @@ export default function ServicesHubSection() {
           caption="Arborescence • Avec ou sans SEO"
           gradient="from-[#8C6AD5] to-[#6D53B1]"
           src="/assets/refonteweb.png"
+          href="/boutique/refonte-web"
         />
 
         {/* Ligne 2 (plus loin sur X) */}
@@ -83,6 +85,7 @@ export default function ServicesHubSection() {
           caption="Identité visuelle • Logo • Valeurs"
           gradient="from-[#3BB7C5] to-[#2A95A1]"
           src="/assets/brandinglogo.png"
+          href="/boutique/logo-essentiel"
         />
         <PillAbs
           side="right"
@@ -92,6 +95,7 @@ export default function ServicesHubSection() {
           caption="Contenu • Mots clés • Conversion"
           gradient="from-[#5B58CC] to-[#4744A3]"
           src="https://www.dropbox.com/scl/fi/sbnt8uuss027gi3cov2j3/2-marketing-digital-strat-gies-canaux-jwl-marketing.png?rlkey=oxcvs22rtlwpwwspfz6z2e1ux&st=uhlfgw9u&raw=1"
+          href="/boutique/redaction-visible"
         />
 
         {/* Ligne 3 (alignée comme la 1) */}
@@ -103,6 +107,7 @@ export default function ServicesHubSection() {
           caption="Prospection • Argumentaire • Closing"
           gradient="from-[#58B162] to-[#469251]"
           src="/assets/devcommercial.png"
+          href="/boutique/prospection-b2b"
         />
         <PillAbs
           side="right"
@@ -112,20 +117,27 @@ export default function ServicesHubSection() {
           caption="Méthode • Confiance • Autonomie"
           gradient="from-[#F08E4A] to-[#D47430]"
           src="/assets/formations.png"
+          href="/boutique/pack-formation"
         />
       </div>
 
       {/* Mobile (≤ lg) — SANS le rond + texte ; le petit rectangle est déplacé à la fin */}
+      {/* Image polaroid en haut sur mobile */}
+      <div className="mt-8 flex justify-center lg:hidden">
+        <Link href="/boutique/">
+          <img src="https://www.dropbox.com/scl/fi/se5uk1qae28hp59jl1z83/objet-personnalise-rse-ce-jwlmarketing.png?rlkey=24gma3wirlnekcuv74eyb7ym5&st=2mbv6ykr&raw=1" alt="Jodie LAPAILLERIE" className="w-30 h--30 md:h-full md:w-full object-cover" />
+        </Link>
+      </div>
      <div className="mt-8 space-y-5 lg:hidden">
         {[
-          ['Audit SEO', 'Stratégies • Optimisation • Référencement', 'from-[#386CC7] to-[#2F5AAC]', '/assets/auditseo.png'],
-          ['Refonte Web', 'Arborescence • Avec ou sans SEO', 'from-[#8C6AD5] to-[#6D53B1]', '/assets/refonteweb.png'],
-          ['Branding et Logo', 'Identité visuelle • Logo • Valeurs', 'from-[#3BB7C5] to-[#2A95A1]', '/assets/brandinglogo.png'],
-          ['Social Média', 'Contenu • Mots clés • Conversion', 'from-[#5B58CC] to-[#4744A3]', '/assets/notfound.jpg'],
-          ['Développement commercial', 'Prospection • Argumentaire • Closing', 'from-[#58B162] to-[#469251]', '/assets/devcommercial.png'],
-          ['Formations', 'Méthode • Confiance • Autonomie', 'from-[#F08E4A] to-[#D47430]', '/assets/formations.png'],
-        ].map(([t, c, g, s]) => (
-          <PillRow key={t} title={t} caption={c} gradient={g} src={s} />
+          ['Audit SEO', 'Stratégies • Optimisation • Référencement', 'from-[#386CC7] to-[#2F5AAC]', '/assets/auditseo.png', '/boutique/seo-starter'],
+          ['Refonte Web', 'Arborescence • Avec ou sans SEO', 'from-[#8C6AD5] to-[#6D53B1]', '/assets/refonteweb.png', '/boutique/refonte-web'],
+          ['Branding et Logo', 'Identité visuelle • Logo • Valeurs', 'from-[#3BB7C5] to-[#2A95A1]', '/assets/brandinglogo.png', '/boutique/logo-essentiel'],
+          ['Social Média', 'Contenu • Mots clés • Conversion', 'from-[#5B58CC] to-[#4744A3]', 'https://www.dropbox.com/scl/fi/sbnt8uuss027gi3cov2j3/2-marketing-digital-strat-gies-canaux-jwl-marketing.png?rlkey=oxcvs22rtlwpwwspfz6z2e1ux&st=uhlfgw9u&raw=1', '/boutique/redaction-visible'],
+          ['Développement commercial', 'Prospection • Argumentaire • Closing', 'from-[#58B162] to-[#469251]', '/assets/devcommercial.png', '/boutique/prospection-b2b'],
+          ['Formations', 'Méthode • Confiance • Autonomie', 'from-[#F08E4A] to-[#D47430]', '/assets/formations.png', '/boutique/pack-formation'],
+        ].map(([t, c, g, s, h]) => (
+          <PillRow key={t} title={t} caption={c} gradient={g} src={s} href={h} />
         ))}
 
         <MobilePortraitAtEnd />
@@ -139,6 +151,16 @@ export default function ServicesHubSection() {
 function CenterAbsolute({ x, y }) {
   return (
     <div className="absolute z-10" style={{ left: x - 120, top: y - 120, width: 240, height: 240 }}>
+      {/* Image polaroid en haut - même espacement que celle du bas avec "Consultante" */}
+      <Link href="/boutique/" className="absolute left-1/2 top-[-220px] -translate-x-1/2">
+        <div className="h-[140px] w-[140px] overflow-hidden rounded-full border-2 border-white shadow-md">
+          <img 
+            src='https://www.dropbox.com/scl/fi/se5uk1qae28hp59jl1z83/objet-personnalise-rse-ce-jwlmarketing.png?rlkey=24gma3wirlnekcuv74eyb7ym5&st=2mbv6ykr&raw=1' 
+            alt="" 
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </Link>
       <span aria-hidden className="absolute inset-0 rounded-full" style={{ boxShadow: `inset 0 0 0 6px ${GOLD}` }} />
       <img src="/assets/personna_judie.png" alt="Jodie - Consultante" className="h-full w-full rounded-full object-cover" />
       <div className="absolute left-1/2 top-[260px] w-[260px] -translate-x-1/2 text-center">
@@ -146,14 +168,14 @@ function CenterAbsolute({ x, y }) {
         <p className="text-[13px]" style={{ color: GOLD }}>Consultante</p>
       </div>
       {/* plus bas sur desktop */}
-      <div className="absolute left-1/2 top-[380px] -translate-x-1/2">
+      <Link href="/boutique/google-gmb" className="absolute left-1/2 top-[380px] -translate-x-1/2">
           <img src='/assets/jodie_polaroid.png' alt="" className="h-full w-full object-cover" />
-      </div>
+      </Link>
     </div>
   );
 }
 
-function PillAbs({ side = 'left', x, y, title, caption, gradient, src }) {
+function PillAbs({ side = 'left', x, y, title, caption, gradient, src, href = '#' }) {
   const padLeft  = side === 'right' ? AVA + GAP + TEXT_GAP : 20;
   const padRight = side === 'left'  ? AVA + GAP + TEXT_GAP : 20;
 
@@ -165,7 +187,7 @@ function PillAbs({ side = 'left', x, y, title, caption, gradient, src }) {
 
   return (
     <Link
-      href="#"
+      href={href}
       className="group absolute z-20"
       style={{ left: x, top: y, width: PILL_W, height: PILL_H }}
       aria-label={title}
@@ -195,9 +217,9 @@ function PillAbs({ side = 'left', x, y, title, caption, gradient, src }) {
 
 /* ===== Mobile only bits ===== */
 
-function PillRow({ title, caption, gradient, src }) {
+function PillRow({ title, caption, gradient, src, href = '#' }) {
   return (
-    <Link href="#" className="group relative inline-flex items-center mt-2">
+    <Link href={href} className="group relative inline-flex items-center mt-2">
       <span className="absolute left-5 z-10 h-[88px] w-[88px] overflow-hidden rounded-full border-2 border-white shadow-md">
         <img src={src} alt="" className="h-full w-full object-cover" />
       </span>
@@ -216,7 +238,9 @@ function PillRow({ title, caption, gradient, src }) {
 function MobilePortraitAtEnd() {
   return (
     <div className="mt-4 flex justify-center">
-        <img src="/assets/jodie_polaroid.png" alt="" className="w-30 h--30 md:h-full md:w-full object-cover" />
+        <Link href="/boutique/google-gmb">
+          <img src="/assets/jodie_polaroid.png" alt="" className="w-30 h--30 md:h-full md:w-full object-cover" />
+        </Link>
     </div>
   );
 }

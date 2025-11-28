@@ -8,6 +8,7 @@ export const CATEGORIES = [
   { key: 'Refonte Web', label: 'Refonte Web', icon: '🌐' },        // solo
   { key: 'Audit & Analyse SEO', label: 'Audit & Analyse SEO', icon: '🚀' }, // Starter/Booster/Local
   { key: 'Google GMB', label: 'Google GMB', icon: '📍' },          // solo
+  { key: 'Goodies', label: 'Goodies', icon: '🎁' },                // solo
   { key: 'Prospection B2B', label: 'Prospection B2B', icon: '📞' }, // Prospection + Salon + Formation
 ];
 
@@ -70,7 +71,7 @@ export const PRODUCTS = [
     slug: 'logo-essentiel',
     title: 'Pack Essentiel',
     category: 'Identité visuelle & Branding',
-    image: 'https://www.dropbox.com/scl/fi/918t4ai9k57cank4xquqx/1.png?rlkey=3k4c7fykbmkz13p1mzrsck8pc&st=54qs3n2f&raw=1',
+    image: 'https://www.dropbox.com/scl/fi/lls3koqipgijcs4zu9x1k/logo-packessentiel1-jwlmarketing-marketing-digitale.png?rlkey=t7wjohuxpfgbfazm9il8zf3gb&st=2qs18hhb&raw=1',
     price: 250,
     rating: 0,
     reviewsCount: 0,
@@ -131,7 +132,7 @@ export const PRODUCTS = [
     slug: 'logo-pro',
     title: 'Pack Pro',
     category: 'Identité visuelle & Branding',
-    image: 'https://www.dropbox.com/scl/fi/aaw9ncadrota3nb8pd9b4/2.png?rlkey=3vlmamvjc7hz1frv91azf2n3l&st=7teiqp4y&raw=1',
+    image: 'https://www.dropbox.com/scl/fi/zyptkq0ew2tw0uj5cd458/logo-packpro2-jwlmarketing-consultante-seo.png?rlkey=lpl2muhbjd4u1wnqqiym88o3h&st=7lqaffnq&raw=1',
     price: 360,
     rating: 0,
     reviewsCount: 0,
@@ -194,7 +195,7 @@ export const PRODUCTS = [
     slug: 'logo-premium',
     title: 'Pack Premium',
     category: 'Identité visuelle & Branding',
-    image: 'https://www.dropbox.com/scl/fi/z1gqqujjqnv5tz4ldwfay/3.png?rlkey=rm3m002yxet5b9j836cox31o0&st=g9clcl04&raw=1',
+    image: 'https://www.dropbox.com/scl/fi/zfcaus18alhgzw0ehqjjd/logo-pack-3-jwlmrketing-branding.png?rlkey=96xwgu2nj80vyq039p4rcahb1&st=kqzr6sk2&raw=1',
     price: 480,
     rating: 0,
     reviewsCount: 0,
@@ -584,7 +585,7 @@ PRODUCTS.push({
   slug: 'refonte-web',
   title: 'Pack Refonte Web',
   category: 'Refonte Web',
-  image: 'https://www.dropbox.com/scl/fi/33fuj2d7b1o3pse9ozusz/3-social-media-jwl-marketing.png?rlkey=5ylntlrvhi26tdwb00bqu2rbb&st=mhppwcro&raw=1',
+  image: 'https://www.dropbox.com/scl/fi/yod614u7q1e0ntmeybh63/refonteweb-web-seo-jwl-marketin.png?rlkey=0joqybm6tagzxpk86i7hycspo&st=gd6y85mc&raw=1',
   price: 450, // base sans SEO
   rating: 0,
   reviewsCount: 0,
@@ -1157,7 +1158,7 @@ PRODUCTS.push({
   slug: 'google-gmb',
   title: 'Google GMB',
   category: 'Google GMB',
-  image: 'https://www.dropbox.com/scl/fi/stfodx4qcsckkukq1vsjs/google-gmb-jwl-marketing.png?rlkey=ubp54db8skqsl1z999kwjyr4a&st=80dxfat9&raw=1',
+  image: 'https://www.dropbox.com/scl/fi/zfcaus18alhgzw0ehqjjd/logo-pack-3-jwlmrketing-branding.png?rlkey=96xwgu2nj80vyq039p4rcahb1&st=kqzr6sk2&raw=1',
   price: 0,
   rating: 0,
   reviewsCount: 0,
@@ -1210,6 +1211,135 @@ PRODUCTS.push({
         Après votre demande, vous recevez automatiquement un cahier des charges en ligne.
         Merci de le compléter puis de me le renvoyer par mail, avant notre rendez-vous visio.
         Il me permettra de préparer l’accompagnement Google Business Profile parfaitement aligné à votre univers.
+      </p>
+    </section>
+  `,
+});
+
+/* ==================
+ *  Goodies (solo)
+ * =================*/
+PRODUCTS.push({
+  slug: 'goodies',
+  title: 'Goodies et objets personnalisés',
+  category: 'Goodies',
+  image: 'https://www.dropbox.com/scl/fi/xzgvie61c3hfnv1ng0fw0/Objets-publicitaire-jwl-marketing.png?rlkey=7p08x8d1v5sz11crvsd0c12cl&st=bztkh7s4&raw=1',
+  price: 0,
+  rating: 0,
+  reviewsCount: 0,
+  tvaNote: TVA_NOTE,
+  excerpt: 'Choisir un objet publicitaire ou un cadeau entreprise devient une véritable opportunité quand il est pensé pour valoriser vos équipes, marquer vos clients et renforcer votre identité.',
+  badges: ['Devis'],
+  highlights: [
+    'Objets publicitaires personnalisés',
+    'Produits RSE & choix durables',
+    'Objets locaux & cadeaux artisanaux',
+  ],
+  pricingMode: 'advanced',
+  advanced: { perDay: false, hidePrice: true },
+  checkoutHref: '/contact?subject=goodies',
+  richContent: `
+    <section>
+      <p class="mt-2 text-neutral-800">
+        Choisir un objet publicitaire ou un cadeau entreprise devient une véritable opportunité quand il est pensé pour valoriser vos équipes, marquer vos clients et renforcer votre identité. JWL Marketing vous accompagne dans la création de vos objets personnalisés, de vos produits RSE, de vos cadeaux CSE et de vos cadeaux locaux, conçus pour soutenir votre communication et sublimer votre image. Grâce à une expertise terrain et à une sélection précise, vous gagnez du temps et profitez d'objets adaptés à votre marque, à votre événement et à vos objectifs professionnels.
+      </p>
+    </section>
+    <section class="mt-6">
+      <h3 class="text-lg font-semibold text-neutral-900">⭐ Objets publicitaires & objets personnalisés : une sélection pensée pour votre visibilité</h3>
+      <p class="mt-2 text-neutral-800">
+        Pour dynamiser vos actions marketing, je vous propose une sélection complète d'objets sur mesure :
+      </p>
+      <ul class="mt-2 list-disc space-y-2 pl-5 text-neutral-800">
+        <li>Objets publicitaires (stylos, tote bags, lanyards, cordons, carnets, mugs, clés USB, papeterie personnalisée)</li>
+        <li>Objets personnalisés pour vos équipes, vos clients et vos partenaires</li>
+        <li>Cadeaux entreprise & cadeaux CSE pour remercier, fidéliser ou célébrer une réussite</li>
+        <li>Kits salons & goodies événementiels : supports pour stands, objets pour réunions, événements internes, soirées professionnelles</li>
+        <li>Objets pour grandes et petites occasions : inauguration, anniversaire d'entreprise, lancement produit, départ à la retraite, restaurant, séminaire…</li>
+      </ul>
+      <p class="mt-2 text-neutral-800">
+        Chaque objet est sélectionné pour être pertinent, durable, esthétique et cohérent avec votre identité.
+      </p>
+    </section>
+    <section class="mt-6">
+      <h3 class="text-lg font-semibold text-neutral-900">🌿 Produits RSE & choix durables : l'objet qui a du sens</h3>
+      <p class="mt-2 text-neutral-800">
+        Pour renforcer votre engagement, je développe également une gamme de :
+      </p>
+      <ul class="mt-2 list-disc space-y-2 pl-5 text-neutral-800">
+        <li>produits RSE,</li>
+        <li>objets fabriqués à partir de matières recyclées,</li>
+        <li>textiles écoresponsables,</li>
+        <li>objets en bois durable,</li>
+        <li>papiers ensemencés,</li>
+        <li>accessoires zéro déchet.</li>
+      </ul>
+      <p class="mt-2 text-neutral-800">
+        Vous pouvez ainsi offrir un objet responsable, utile et aligné avec vos valeurs.
+      </p>
+      <p class="mt-2 text-neutral-800">
+        C'est la combinaison parfaite entre image de marque, engagement durable et communication intelligente.
+      </p>
+    </section>
+    <section class="mt-6">
+      <h3 class="text-lg font-semibold text-neutral-900">🎁 Objets locaux & cadeaux artisanaux : la touche authentique de Provence</h3>
+      <p class="mt-2 text-neutral-800">
+        Basée en Provence, JWL Marketing travaille en lien direct avec des artisans locaux spécialisés dans :
+      </p>
+      <ul class="mt-2 list-disc space-y-2 pl-5 text-neutral-800">
+        <li>les saveurs artisanales,</li>
+        <li>les cosmétiques naturels,</li>
+        <li>les créations artistiques et la peinture,</li>
+        <li>les santons traditionnels,</li>
+        <li>le chocolat artisanal.</li>
+      </ul>
+      <p class="mt-2 text-neutral-800">
+        Chaque cadeau local devient un objet unique, authentique, idéal pour des coffrets, des remerciements clients ou des événements professionnels.
+      </p>
+      <p class="mt-2 text-neutral-800">
+        Vous souhaitez un mélange entre objet publicitaire, produit local, cadeau d'entreprise et produit RSE ? Je vous oriente vers les combinaisons les plus pertinentes.
+      </p>
+    </section>
+    <section class="mt-6">
+      <h3 class="text-lg font-semibold text-neutral-900">Pourquoi choisir JWL Marketing pour vos objets personnalisés ?</h3>
+      <p class="mt-2 text-neutral-800">
+        Grâce à mon expérience cela vous permettra également de gagner un temps précieux dans votre sourcing. De plus je connais :
+      </p>
+      <ul class="mt-2 list-disc space-y-2 pl-5 text-neutral-800">
+        <li>les fournisseurs fiables,</li>
+        <li>les matières de qualité,</li>
+        <li>les objets qui fonctionnent selon les secteurs,</li>
+        <li>les produits idéaux pour les salons,</li>
+        <li>les tendances actuelles en cadeaux d'entreprise et cadeaux CSE.</li>
+      </ul>
+      <p class="mt-2 text-neutral-800">
+        Plutôt que de passer des heures sur un site en ligne, vous gagnez :
+      </p>
+      <ul class="mt-2 list-disc space-y-2 pl-5 text-neutral-800">
+        <li>du temps,</li>
+        <li>un choix simplifié,</li>
+        <li>une sélection cohérente,</li>
+        <li>des conseils basés sur l'usage réel de l'objet,</li>
+        <li>un accompagnement personnalisé jusqu'à la livraison.</li>
+      </ul>
+    </section>
+    <section class="mt-6">
+      <h3 class="text-lg font-semibold text-neutral-900">Objectif : vous aider à choisir l'objet parfait</h3>
+      <p class="mt-2 text-neutral-800">
+        Mon rôle est simple : vous proposer l'objet personnalisé, local ou RSE le plus adapté à votre marque, à votre public et à votre occasion.
+      </p>
+      <p class="mt-2 text-neutral-800">
+        Chaque recommandation vous permet d'avancer plus vite, de communiquer avec sens et de renforcer votre visibilité avec des objets vraiment efficaces.
+      </p>
+      <p class="mt-2 text-neutral-800">
+        Voici ce que je vous propose : un objet personnalisé imaginé pour vous, sélectionné en local ou en RSE, idéal pour vos cadeaux d'entreprise et événements professionnels.
+      </p>
+    </section>
+    <section class="mt-6">
+      <h3 class="text-lg font-semibold text-neutral-900">⚡ À savoir</h3>
+      <p class="mt-2 text-neutral-800">
+        Après votre demande, vous recevez automatiquement un cahier des charges en ligne.
+        Merci de le compléter puis de me le renvoyer par mail, avant notre rendez-vous visio.
+        Il me permettra de préparer la sélection d'objets personnalisés parfaitement alignée à votre univers.
       </p>
     </section>
   `,

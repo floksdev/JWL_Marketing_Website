@@ -74,7 +74,7 @@ export default function QuiSuisJeTeaser({
         {/* Colonne image (polaroid léger) */}
         <div
           className={clsx(
-            "flex justify-center",
+            "flex justify-center mt-8 lg:mt-0",
             imageSide === "right" ? "lg:justify-end" : "lg:justify-start"
           )}
         >

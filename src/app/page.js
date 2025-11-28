@@ -51,7 +51,7 @@ export default function HomePage() {
         // excerpt="…"                 // idem : met ton pitch court ici
         href="/qui-suis-je"
         ctaLabel="Lire la suite"
-        imageSrc="https://www.dropbox.com/scl/fi/6ou8js3ovfnkv5t49u5ps/Jodie-lapaillerie-portrait-jwl-marketing-aix.png?rlkey=1xamn3ibfd0u7h2zvbvjguf0m&st=w265w3eo&raw=1"
+        imageSrc="https://www.dropbox.com/scl/fi/gfhlyhtsn3rojbwnwk76s/jodie-lapaillerie-consultante-jwlmarketing.png?rlkey=g0x17j1q7l7rsmbvgppmuucqy&st=vzdlzv3i&raw=1"
         imageAlt="Portrait de Jodie"
         imageSide="left"              // ou "left"
       />
