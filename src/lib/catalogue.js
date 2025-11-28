@@ -1158,7 +1158,7 @@ PRODUCTS.push({
   slug: 'google-gmb',
   title: 'Google GMB',
   category: 'Google GMB',
-  image: 'https://www.dropbox.com/scl/fi/zfcaus18alhgzw0ehqjjd/logo-pack-3-jwlmrketing-branding.png?rlkey=96xwgu2nj80vyq039p4rcahb1&st=kqzr6sk2&raw=1',
+  image: 'https://www.dropbox.com/scl/fi/8vyzsl12a1b2z8tcebl1s/gmb-jwl-marketing-1.png?rlkey=ycuk0wtl5ggkmvq71ptgpuavd&st=780hhq91&raw=1',
   price: 0,
   rating: 0,
   reviewsCount: 0,

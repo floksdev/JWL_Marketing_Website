@@ -124,8 +124,10 @@ export default function ServicesHubSection() {
       {/* Mobile (≤ lg) — SANS le rond + texte ; le petit rectangle est déplacé à la fin */}
       {/* Image polaroid en haut sur mobile */}
       <div className="mt-8 flex justify-center lg:hidden">
-        <Link href="/boutique/">
-          <img src="https://www.dropbox.com/scl/fi/se5uk1qae28hp59jl1z83/objet-personnalise-rse-ce-jwlmarketing.png?rlkey=24gma3wirlnekcuv74eyb7ym5&st=2mbv6ykr&raw=1" alt="Jodie LAPAILLERIE" className="w-30 h--30 md:h-full md:w-full object-cover" />
+        <Link href="/boutique/goodies">
+          <div className="h-[140px] w-[140px] overflow-hidden rounded-full border-2 border-white shadow-md">
+            <img src="https://www.dropbox.com/scl/fi/se5uk1qae28hp59jl1z83/objet-personnalise-rse-ce-jwlmarketing.png?rlkey=24gma3wirlnekcuv74eyb7ym5&st=2mbv6ykr&raw=1" alt="Jodie LAPAILLERIE" className="h-full w-full object-cover" />
+          </div>
         </Link>
       </div>
      <div className="mt-8 space-y-5 lg:hidden">
@@ -152,7 +154,7 @@ function CenterAbsolute({ x, y }) {
   return (
     <div className="absolute z-10" style={{ left: x - 120, top: y - 120, width: 240, height: 240 }}>
       {/* Image polaroid en haut - même espacement que celle du bas avec "Consultante" */}
-      <Link href="/boutique/" className="absolute left-1/2 top-[-220px] -translate-x-1/2">
+      <Link href="/boutique/goodies" className="absolute left-1/2 top-[-220px] -translate-x-1/2">
         <div className="h-[140px] w-[140px] overflow-hidden rounded-full border-2 border-white shadow-md">
           <img 
             src='https://www.dropbox.com/scl/fi/se5uk1qae28hp59jl1z83/objet-personnalise-rse-ce-jwlmarketing.png?rlkey=24gma3wirlnekcuv74eyb7ym5&st=2mbv6ykr&raw=1' 
